@@ -1,0 +1,118 @@
+@import url(https://fonts.googleapis.com/css?family=Merriweather:400,400italic,300,300italic,700,700italic&subset=latin,latin-ext);
+@import url(https://fonts.googleapis.com/css?family=Sanchez:400,400italic);
+@import url(https://fonts.googleapis.com/css?family=Roboto+Slab:400,700,300,100);
+@import url(https://fonts.googleapis.com/css?family=Rokkitt:400,700);
+html {
+  box-sizing: border-box;
+  height: 100%; }
+  html *, html *:before, html *:after {
+    box-sizing: inherit; }
+
+body {
+  background: #002;
+  height: 100%; }
+
+.edge {
+  position: fixed;
+  top: 0;
+  width: 30px;
+  height: 100%; }
+  .edge .background-cover {
+    background: #212121;
+    width: 100%;
+    height: 100%; }
+  .edge .ribbon {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 7px;
+    background-size: 7px auto; }
+  .edge.left {
+    left: 0; }
+    .edge.left .ribbon {
+      right: -7px;
+      background-image: url(/img/ribbon-left.png); }
+  .edge.right {
+    right: 0; }
+    .edge.right .ribbon {
+      left: -7px;
+      background-image: url(/img/ribbon-right.png); }
+
+.main-wrapper {
+  display: block;
+  padding: 0 30px;
+  height: 100%;
+  width: 100%; }
+
+.main-content {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+  background-color: #604E5B;
+  background-image: url(/img/background.svg);
+  background-size: cover; }
+
+section {
+  color: white;
+  font-family: Sanchez;
+  width: 100%;
+  height: 100%;
+  padding: 60px 15%; }
+  section.about .full-name {
+    display: block;
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    margin: 30px auto 40px; }
+    section.about .full-name img {
+      width: 100%; }
+    section.about .full-name .swirl, section.about .full-name .background-swirl {
+      position: absolute;
+      top: -47%;
+      right: 2.75%;
+      width: 45%;
+      overflow: hidden; }
+      section.about .full-name .swirl img, section.about .full-name .background-swirl img {
+        width: 100%; }
+    section.about .full-name .background-swirl {
+      opacity: 0.2; }
+  section.about .introduction {
+    display: block;
+    width: 80%;
+    margin: 0 auto;
+    padding-bottom: 50px;
+    border-bottom: 3px dashed white;
+    font-size: 25px;
+    line-height: 1.2;
+    text-align: center;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.2); }
+    section.about .introduction span {
+      color: #F7E4BE;
+      font-weight: bold; }
+  section.about .about-box {
+    padding: 20px 40px;
+    display: block;
+    margin: 40px auto 0;
+    width: 70%;
+    height: 175px;
+    background: rgba(0, 0, 0, 0.35);
+    border-radius: 20px; }
+
+@media (min-width: 1260px) {
+  .edge {
+    width: calc( 50% - 600px ); }
+
+  .main-content {
+    width: 1200px; } }
+@media (max-width: 420px) {
+  .main-wrapper {
+    padding: 0; }
+
+  section {
+    padding: 30px 10%; }
+
+  .edge {
+    display: none; } }
+
+/*# sourceMappingURL=main.css.map */
