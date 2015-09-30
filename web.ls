@@ -1,5 +1,4 @@
 express = require \express
-http = require \http
 
 const static_dir = './static'
 const homepage = static_dir + '/html/main.html'
@@ -18,7 +17,9 @@ stutter = 0
 
 app.get '/img/:middle/:tail' (req, res) -> setTimeout (-> res.sendfile static_dir + req.path), 0
 
-app.set \port, process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 8000
-app.set \ip, process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1"
+server_port = process.env.OPENSHIFT_NODEJS_PORT || 8000
+server_ip_address = process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1"
 
-http.createServer(app).listen app.get(\port), app.get(\ip)
+console.log "Trying to listen to port #server_port at #server_ip_address"
+
+app.listen server_port, server_ip_address, -> console.log "Listening to port #server_port at #server_ip_address"
