@@ -41,6 +41,7 @@ body {
   font-size: 25px;
   color: white;
   font-family: "Arial Black", Gadget, sans-serif;
+  font-weight: bold;
   z-index: 1001; }
   .navigation .arrow {
     width: 16px;
@@ -150,6 +151,8 @@ section {
     border: 10px solid rgba(0, 0, 0, 0.1); }
     section.about .about-box .title {
       font-family: "Arial Black", Gadget, sans-serif;
+      font-weight: bold;
+      font-weight: bold;
       margin-bottom: 20px; }
     section.about .about-box .content a {
       color: #CFF09E; }
@@ -168,6 +171,7 @@ section {
       font-variant: small-caps; }
     section.contact .title {
       font-family: "Arial Black", Gadget, sans-serif;
+      font-weight: bold;
       margin-bottom: 5px; }
     section.contact .content {
       margin-bottom: 15px; }
@@ -201,6 +205,7 @@ section {
             text-decoration: none; }
     section.projects .title {
       font-family: "Arial Black", Gadget, sans-serif;
+      font-weight: bold;
       font-size: 16px;
       margin-bottom: 15px; }
   section.skills {
@@ -210,6 +215,7 @@ section {
     float: right; }
     section.skills .title {
       font-family: "Arial Black", Gadget, sans-serif;
+      font-weight: bold;
       font-size: 18px;
       margin-bottom: 10px; }
     section.skills .timeline {
