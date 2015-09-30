@@ -24,7 +24,8 @@ body {
   background: #212121;
   height: 100%;
   font-family: Helvetica;
-  font-weight: lighter; }
+  font-weight: lighter;
+  overflow-x: hidden; }
 
 .main-wrapper {
   width: 100%;

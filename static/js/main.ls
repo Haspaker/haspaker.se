@@ -186,9 +186,10 @@ class SiteView extends Backbone.View
 
 	initialize: ->
 
-		is_safari = navigator.userAgent.indexOf('Safari') isnt -1 and navigator.userAgent.indexOf('Chrome') is -1
+		@is_device = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+		@is_safari = navigator.userAgent.indexOf('Safari') isnt -1 and navigator.userAgent.indexOf('Chrome') is -1
 
-		if not is_safari
+		if not @is_safari and not @is_device
 			$(window).scroll @keep_edge_fixed
 			$(window).resize @keep_edge_fixed
 
