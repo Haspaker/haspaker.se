@@ -17,4 +17,4 @@ stutter = 0
 
 app.get '/img/:middle/:tail' (req, res) -> setTimeout (-> res.sendfile static_dir + req.path), 0
 
-app.listen process.env.PORT || 8000
+app.listen process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 8000
