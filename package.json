@@ -2,7 +2,6 @@
   "name": "haspaker.se",
   "version": "1.0.0",
   "description": "My website",
-  "main": "index.js",
   "scripts": {
     "start": "make && node web.js"
   },
