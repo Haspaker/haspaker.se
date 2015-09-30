@@ -261,7 +261,7 @@ section {
   .main-content .edge {
     transition: width 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
   .main-content.covered .edge.right, .main-content.covered .edge.left {
-    width: 50%; }
+    width: 51%; }
   .main-content.covered .page-label {
     opacity: 0.5; }
 
