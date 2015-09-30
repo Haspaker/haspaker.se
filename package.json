@@ -4,7 +4,7 @@
   "description": "My website",
   "main": "index.js",
   "scripts": {
-    "start": "lsc web.ls"
+    "start": "make && node web.js"
   },
   "author": "haspaker",
   "license": "MIT",

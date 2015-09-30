@@ -1,3 +1,5 @@
+window <<< require 'prelude-ls'
+
 class Page extends Backbone.Model
 
 	view: PageView
@@ -34,9 +36,9 @@ class AboutPageView extends PageView
 
 	el: \section.about
 
-	initialize: -> 
-		super ...
+	initialize: ->
 		@nameView = new NameView model: @model
+		super ...
 
 class ContactPageView extends PageView
 
@@ -45,9 +47,6 @@ class ContactPageView extends PageView
 class ProjectsPageView extends PageView
 
 	el: \section.projects
-
-	initialize: ->
-		super ...
 
 	show: -> 
 		$('.main-content').addClass \covered
@@ -77,6 +76,7 @@ class SkillsPageView extends PageView
 
 	show: -> 
 		$('.main-content').addClass \covered
+		@$el.delay(500).fadeIn() # Pass 0s duration to make delayable animation
 
 	hide: -> 
 		$('.main-content').removeClass \covered
@@ -94,19 +94,36 @@ class Navigation extends Backbone.Model
 		* Page
 		* Page
 
+	hashlinks:
+		about: 0
+		projects: 1
+		skills: 2
+		contact: 3
 
 	initialize: ->
 
-		@pages .= map (new)
+		@pages |>= map (new)
 
-		page_index = @get(\page_index)
+		@hashlink!
+		@change_page!
 
-		@pages[ page_index ].activate!
+		window.onhashchange = @hashlink
 
-		@on 'change:page_index', ->
-			index = @get \page_index
-			@pages.map -> it.deactivate!
-			@pages[ index ].activate!
+		@on 'change:page_index', @change_page
+
+	change_page: ->
+		index = @get \page_index
+		@pages.map -> it.deactivate!
+		@pages[index].activate!
+
+	hashlink: ~>
+		hash = tail location.hash
+		if hash in keys @hashlinks
+			@set \page_index, @hashlinks[hash]
+
+
+
+
 
 class NavigationView extends Backbone.View
 
@@ -126,10 +143,15 @@ class NavigationView extends Backbone.View
 		for page_model, i in @model.pages
 			@pages[i] = new @pages[i] model: page_model
 
+		page_index = @model.get \page_index
+		@pages[ page_index ].$el.show!
+
 		@listenTo @model, 'change:page_index', @move_arrow
 		@listenTo @model, 'change:page_index', @render
 		$(window).resize @position_arrow
 		@position_arrow!
+
+		@render!
 
 	get_selected_page_label: ->
 		page_index = @model.get \page_index
@@ -171,7 +193,8 @@ class SiteView extends Backbone.View
 			$(window).resize @keep_edge_fixed
 
 	keep_edge_fixed: ->
-		with $(window) => $('.edge .ribbon').css height: ..height(), top: ..scrollTop()		
+		with $(window) =>
+			$('.edge .ribbon').css height: ..height(), top: ..scrollTop()		
 
 
 
