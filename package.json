@@ -5,7 +5,6 @@
   "scripts": {
     "start": "make && node web.js"
   },
-  "main": "web.js",
   "author": "haspaker",
   "license": "MIT",
   "dependencies": {
