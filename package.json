@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "My website",
   "scripts": {
-    "start": "make && node web.js"
+    "build": "make",
+    "server": "node web.js",
+    "start": "npm run build && npm run server"
   },
   "author": "haspaker",
   "license": "MIT",
