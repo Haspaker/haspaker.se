@@ -194,6 +194,7 @@ class SiteView extends Backbone.View
 			$(window).resize @keep_edge_fixed
 
 	keep_edge_fixed: ->
+		console.log 'mooo'
 		with $(window) =>
 			$('.edge .ribbon').css height: ..height(), top: ..scrollTop()		
 
