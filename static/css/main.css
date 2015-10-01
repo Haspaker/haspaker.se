@@ -210,7 +210,6 @@ section {
       margin-bottom: 15px; }
   section.skills {
     padding: 60px 10%;
-    padding-left: calc( 10% + 85px);
     width: calc( 100% - 270px );
     float: right; }
     section.skills .title {
@@ -218,6 +217,8 @@ section {
       font-weight: bold;
       font-size: 18px;
       margin-bottom: 10px; }
+    section.skills .experiences {
+      margin-left: 85px; }
     section.skills .timeline {
       display: block;
       margin: 0 auto; }
