@@ -269,8 +269,6 @@ section
 
 	&.skills
 		padding: 60px 10%
-		//padding-left: 100px // fallback for older browsers
-		//padding-left: calc( 10% )
 		width: calc( 100% - 270px )
 		float: right
 
@@ -278,27 +276,69 @@ section
 			font-family: $title-font
 			font-weight: bold
 			font-size: 18px
-			margin-bottom: 10px
 
-		.experiences
-			margin-left: 85px
+		.skill-graph
+			margin-top: 15px
+			margin-bottom: 40px
+			position: relative
+			border-left: 4px solid white
+
+			// Prevent slight vertical padding for inline elements, it messes with the left border. 
+			// Reset on relevant children
+			line-height: 0 
+
+			// We must prevent the bar width from influencing the width of the parent
+			// Otherwise the graph will wobble in place when centered and the bars animate 
+			// This might slightly skew the centering if the bars are long enough
+			// ... but in _this case_ not really enough to be noticable.
+			width: 0
+			white-space: nowrap
+
+			.skill
+				padding: 0
+				margin-top: 5px
+
+				.label, .bar, .value
+					display: inline-block
+					vertical-align: middle
+
+				.label
+					line-height: 1
+					position: absolute
+					right: 100%
+					padding-right: 15px
+					white-space: nowrap
+				.bar
+					height: 15px
+					background: white
+
+				.value
+					padding-left: 10px
+					color: #666
+
+		.experiences, .graphs
+			padding-left: 85px
 
 		.timeline
-			display: block
-			margin: 0 auto
 			.event
 				position: relative
 				height: 53px
-				background-image: url(/img/timeline-large.png) // Dimensions: |--30px--( 40px )--36px--|
+				background-image: url(/img/timeline-large.png)
+				&:first-of-type
+					background-image: url(/img/timeline-large-top.png)  // Dimensions: |--30px--( 40px )--36px--|
 				background-size: 20px 53px
 				padding-left: 28px
-				padding-top: 18px
+				padding-top: 17px
 				background-repeat: no-repeat
 
+				.engagement .extra-info
+					color: #666
+
 				.period
-					font-weight: bold
+					//font-weight: bold
+					color: white //#666
 					position: absolute
-					top: 18px
+					top: 17px
 					right: 100%
 					padding-right: 10px
 					white-space: nowrap
@@ -320,6 +360,14 @@ section
 		width: $max-content-width
 
 @media (max-width: 1050px )
+
+	.responsive-centered-outer 
+		float: left
+		position: relative
+		left: 50%
+	.responsive-centered-inner
+		position: relative
+		left: -50%
 
 	.navigation
 

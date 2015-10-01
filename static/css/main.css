@@ -215,31 +215,57 @@ section {
     section.skills .title {
       font-family: "Arial Black", Gadget, sans-serif;
       font-weight: bold;
-      font-size: 18px;
-      margin-bottom: 10px; }
-    section.skills .experiences {
-      margin-left: 85px; }
-    section.skills .timeline {
-      display: block;
-      margin: 0 auto; }
-      section.skills .timeline .event {
-        position: relative;
-        height: 53px;
-        background-image: url(/img/timeline-large.png);
-        background-size: 20px 53px;
-        padding-left: 28px;
-        padding-top: 18px;
-        background-repeat: no-repeat; }
-        section.skills .timeline .event .period {
-          font-weight: bold;
+      font-size: 18px; }
+    section.skills .skill-graph {
+      margin-top: 15px;
+      margin-bottom: 40px;
+      position: relative;
+      border-left: 4px solid white;
+      line-height: 0;
+      width: 0;
+      white-space: nowrap; }
+      section.skills .skill-graph .skill {
+        padding: 0;
+        margin-top: 5px; }
+        section.skills .skill-graph .skill .label, section.skills .skill-graph .skill .bar, section.skills .skill-graph .skill .value {
+          display: inline-block;
+          vertical-align: middle; }
+        section.skills .skill-graph .skill .label {
+          line-height: 1;
           position: absolute;
-          top: 18px;
           right: 100%;
-          padding-right: 10px;
+          padding-right: 15px;
           white-space: nowrap; }
-        section.skills .timeline .event .location {
-          margin-top: 3px;
+        section.skills .skill-graph .skill .bar {
+          height: 15px;
+          background: white; }
+        section.skills .skill-graph .skill .value {
+          padding-left: 10px;
           color: #666; }
+    section.skills .experiences, section.skills .graphs {
+      padding-left: 85px; }
+    section.skills .timeline .event {
+      position: relative;
+      height: 53px;
+      background-image: url(/img/timeline-large.png);
+      background-size: 20px 53px;
+      padding-left: 28px;
+      padding-top: 17px;
+      background-repeat: no-repeat; }
+      section.skills .timeline .event:first-of-type {
+        background-image: url(/img/timeline-large-top.png); }
+      section.skills .timeline .event .engagement .extra-info {
+        color: #666; }
+      section.skills .timeline .event .period {
+        color: white;
+        position: absolute;
+        top: 17px;
+        right: 100%;
+        padding-right: 10px;
+        white-space: nowrap; }
+      section.skills .timeline .event .location {
+        margin-top: 3px;
+        color: #666; }
 
 @media (min-width: 1360px) {
   .navigation {
@@ -248,6 +274,15 @@ section {
   .main-content {
     width: 1300px; } }
 @media (max-width: 1050px) {
+  .responsive-centered-outer {
+    float: left;
+    position: relative;
+    left: 50%; }
+
+  .responsive-centered-inner {
+    position: relative;
+    left: -50%; }
+
   .navigation {
     position: relative;
     padding: 0 30px;

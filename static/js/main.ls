@@ -71,10 +71,40 @@ class SkillsPageView extends PageView
 
 	el: \section.skills
 
+	skills:
+		'coffeescript': 1.00
+		'html / css': 1.00
+		'javascript': 0.85
+		'php': 0.70
+		'swift': 0.50
+		'node.js': 1.00
+		'wordpress': 0.90
+		'cocoa': 0.50
+
+	max_bar_width: 250px
+
 	initialize: ->
+		$(window).resize @adjust_graph_bars
 		super ...
 
+	hide_graph_bars: ->
+		@$('.skill-graph .bar').css width: 0
+
+	get_bar_width: (ratio) -> @max_bar_width * ratio * Math.min 1, $(window).width() / 800	
+
+	get_bar_by_label: (label) -> @$( ".skill .label:contains('#label') + .bar")
+
+	show_graph_bars: ~>
+		@hide_graph_bars!
+		for label, ratio of @skills
+			@get_bar_by_label(label).delay(500).animate width: @get_bar_width(ratio), 4000, \easeOutElastic
+
+	adjust_graph_bars: ~>
+		for label, ratio of @skills
+			@get_bar_by_label(label).stop().css width: @get_bar_width(ratio)
+
 	show: -> 
+		@show_graph_bars!
 		$('.main-content').addClass \covered
 		@$el.delay(500).fadeIn() # Pass 0s duration to make delayable animation
 
@@ -110,6 +140,7 @@ class Navigation extends Backbone.Model
 		window.onhashchange = @hashlink
 
 		@on 'change:page_index', @change_page
+		@on 'change:page_index', @update_hash
 
 	change_page: ->
 		index = @get \page_index
@@ -120,6 +151,10 @@ class Navigation extends Backbone.Model
 		hash = tail location.hash
 		if hash in keys @hashlinks
 			@set \page_index, @hashlinks[hash]
+
+	update_hash: ~>
+		index = @get \page_index
+		window.location.hash = (keys @hashlinks)[index]
 
 
 
@@ -144,7 +179,7 @@ class NavigationView extends Backbone.View
 			@pages[i] = new @pages[i] model: page_model
 
 		page_index = @model.get \page_index
-		@pages[ page_index ].$el.show!
+		#@pages[ page_index ].$el.show!
 
 		@listenTo @model, 'change:page_index', @move_arrow
 		@listenTo @model, 'change:page_index', @render
@@ -186,12 +221,15 @@ class SiteView extends Backbone.View
 
 	initialize: ->
 
-		@is_device = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+		@is_chrome = /Chrome/i.test(navigator.userAgent)
+		@is_firefox = /Firefox/i.test(navigator.userAgent)
 		@is_safari = navigator.userAgent.indexOf('Safari') isnt -1 and navigator.userAgent.indexOf('Chrome') is -1
+		@is_device = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
 
-		if not @is_safari and not @is_device
-			$(window).scroll @keep_edge_fixed
-			$(window).resize @keep_edge_fixed
+		if not @is_device
+			if @is_chrome or @is_firefox
+				$(window).scroll @keep_edge_fixed
+				$(window).resize @keep_edge_fixed
 
 	keep_edge_fixed: ->
 		console.log 'mooo'
