@@ -329,6 +329,13 @@ section {
   section.about .about-box {
     width: 100%; }
 
+  section.skills .timeline .event {
+    height: 67px;
+    background-image: url(/img/timeline-long.png);
+    background-size: 20px 67px; }
+    section.skills .timeline .event:first-of-type {
+      background-image: url(/img/timeline-long-top.png); }
+
   .main-content .edge.left {
     left: -7px; }
   .main-content .edge.right {
