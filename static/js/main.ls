@@ -14,7 +14,7 @@ class PageView extends Backbone.View
 
 	initialize: ->
 		@listenTo @model, 'change:active', @show_hide
-		@show_hide!
+		if @model.get \active => @show!
 
 	show_hide: ->
 		if @model.get \active => @show!
@@ -22,14 +22,7 @@ class PageView extends Backbone.View
 
 	show: -> @$el.delay(500).fadeIn()
 
-	hide: -> 
-
-		#with @$el
-		#	..animate top: ..offset().top + ..height(), 300, ~>
-		#		..css top: 0
-		#		..hide!
-
-		@$el.stop().hide!
+	hide: ->  @$el.stop().hide!
 
 
 class AboutPageView extends PageView
@@ -40,6 +33,12 @@ class AboutPageView extends PageView
 		@nameView = new NameView model: @model
 		super ...
 
+	show: ->
+		with window.navigation
+			# Don't animate if website just loaded the front page
+			if ..previous("page_index") is ..hashlinks.about => @$el.show!
+			else super ...
+
 class ContactPageView extends PageView
 
 	el: \section.contact
@@ -49,12 +48,12 @@ class ProjectsPageView extends PageView
 	el: \section.projects
 
 	show: -> 
-		$('.main-content').addClass \covered
+		window.site.set \drapery, true
 		@prepare_slide_in_projects!
 		setTimeout @slide_in_projects, 1000
 
 	hide: -> 
-		$('.main-content').removeClass \covered
+		window.site.set \drapery, false
 		@$el.hide!
 
 	prepare_slide_in_projects: ~>
@@ -104,12 +103,12 @@ class SkillsPageView extends PageView
 			@get_bar_by_label(label).stop().css width: @get_bar_width(ratio)
 
 	show: -> 
+		window.site.set \drapery, true
 		@show_graph_bars!
-		$('.main-content').addClass \covered
 		@$el.delay(500).fadeIn() # Pass 0s duration to make delayable animation
 
 	hide: -> 
-		$('.main-content').removeClass \covered
+		window.site.set \drapery, false
 		@$el.hide!
 
 
@@ -155,9 +154,6 @@ class Navigation extends Backbone.Model
 	update_hash: ~>
 		index = @get \page_index
 		window.location.hash = (keys @hashlinks)[index]
-
-
-
 
 
 class NavigationView extends Backbone.View
@@ -216,6 +212,10 @@ class NavigationView extends Backbone.View
 
 	select_page: (index) -> @model.set \page_index, index
 
+class Site extends Backbone.Model
+
+	defaults:
+		drapery: false
 
 class SiteView extends Backbone.View
 
@@ -223,18 +223,22 @@ class SiteView extends Backbone.View
 
 		@is_chrome = /Chrome/i.test(navigator.userAgent)
 		@is_firefox = /Firefox/i.test(navigator.userAgent)
-		@is_safari = navigator.userAgent.indexOf('Safari') isnt -1 and navigator.userAgent.indexOf('Chrome') is -1
+		@is_safari = /Safari/i.test(navigator.userAgent) and not @is_chrome
 		@is_device = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
 
 		if not @is_device
 			if @is_chrome or @is_firefox
-				$(window).scroll @keep_edge_fixed
+				$(document).on 'scroll', @keep_edge_fixed
 				$(window).resize @keep_edge_fixed
 
+		@listenTo @model, 'change:drapery', @toggle_drapery
+
+	toggle_drapery: ->
+		$('.main-content').toggleClass \drapery 
+
 	keep_edge_fixed: ->
-		console.log 'mooo'
 		with $(window) =>
-			$('.edge .ribbon').css height: ..height(), top: ..scrollTop()		
+			$('.edge .ribbon').css height: $(document).height() - ..scrollTop(), top: ..scrollTop()
 
 
 
@@ -294,6 +298,7 @@ class NameView extends Backbone.View
 
 $ ->
 
+	window.site = new Site()
+	siteView = new SiteView model: window.site
 	window.navigation = new Navigation()
-	navigationView = new NavigationView model: navigation
-	siteView = new SiteView()
+	navigationView = new NavigationView model: window.navigation

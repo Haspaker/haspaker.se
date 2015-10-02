@@ -119,7 +119,7 @@ body
 				left: -7px
 				background-image: url( /img/ribbon-right.png )
 
-	&.covered .edge.right
+	&.drapery .edge.right
 		width: calc( 100% - 240px )
 
 section
@@ -209,13 +209,17 @@ section
 				float: left
 
 	&.contact
+
 		text-align: center
 		font-size: 18px
-		.big.title
-			font-family: Vincent
-			font-size: 90px
-			margin-bottom: 50px
-			font-variant: small-caps
+
+		img
+			display: block
+			margin: 0 auto
+			width: 100%
+			max-width: 240px
+			margin-bottom: 40px
+
 		.title
 			font-family: $title-font
 			font-weight: bold
@@ -386,13 +390,17 @@ section
 		.edge
 			transition: width 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)
 
-		&.covered 
+		&.drapery 
 
 			.edge.right, .edge.left
 				width: 51% // 1% extra to guarantee overlap
 
 			.page-label
 				opacity: 0.5
+
+	section.about
+		.about-box
+			width: 80%
 
 	section.projects, section.skills
 
@@ -422,6 +430,10 @@ section
 	section
 		padding: 30px 10%
 
+	section.about
+		.about-box
+			width: 100%
+
 	.main-content
 		.edge
 			&.left
@@ -429,7 +441,7 @@ section
 			&.right
 				right: -7px
 
-		&.covered .edge
+		&.drapery .edge
 			&.left
 				left: 0px
 			&.right
