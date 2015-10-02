@@ -290,10 +290,10 @@ class NameView extends Backbone.View
 		window.preloaded_name_imgs = []
 		for frame_index from 1 to @frames => let frame_index
 			img = window.preloaded_name_imgs[ frame_index ] = new Image()
-			img.onload = if ++@loaded_frames is @frames then @start_animation!
+			img.onload = -> if ++@loaded_frames is @frames then @start_animation!
 			img.src = @frame_url frame_index
-			$(img).css height:0, width:0, visibility: \hidden
-			$(img).appendTo \body
+			#$(img).css height:0, width:0, visibility: \hidden
+			#$(img).appendTo \body
 
 
 
