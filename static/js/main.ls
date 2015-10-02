@@ -230,6 +230,7 @@ class SiteView extends Backbone.View
 			if @is_chrome or @is_firefox
 				$(document).on 'scroll', @keep_edge_fixed
 				$(window).resize @keep_edge_fixed
+				@listenTo window.navigation, 'change:page_index', @keep_edge_fixed
 
 		@listenTo @model, 'change:drapery', @toggle_drapery
 
@@ -310,6 +311,6 @@ class NameView extends Backbone.View
 $ ->
 
 	window.site = new Site()
-	siteView = new SiteView model: window.site
 	window.navigation = new Navigation()
+	siteView = new SiteView model: window.site
 	navigationView = new NavigationView model: window.navigation
