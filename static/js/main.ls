@@ -259,17 +259,27 @@ class NameView extends Backbone.View
 
 	initialize: ->
 
+		@create_frame_divs!
 		@preload_images!
 
 		setTimeout @start_animation, @animation_delay
 
 		@listenTo @model, 'change:active', ~> if @model.get(\active) => @restart_animation!
 
-	frame_url: (frame) -> "/img/swirl/frame-#frame.png"
+	frame_url: (frame) -> "http://www.haspaker.se/img/swirl/frame-#frame.png"
+	frame_div: (frame) -> $(".swirl.frame-#frame")
 
 	set_frame: (frame) -> 
 		@current_frame = frame
-		$('.swirl img').attr src: @frame_url frame
+		$(".swirl").css visibility: \hidden
+		@frame_div(frame).css visibility: \visible
+
+	create_frame_divs: ->
+		for i from 1 to @frames
+			$('<div/>')
+				.addClass("swirl frame-#i")
+				.css visibility: \hidden
+				.appendTo @$el
 
 	next_frame: ~>
 		if @current_frame < @frames
@@ -292,7 +302,7 @@ class NameView extends Backbone.View
 			img = window.preloaded_name_imgs[ frame_index ] = new Image()
 			img.onload = ~> if ++@loaded_frames is @frames then @start_animation!
 			img.src = @frame_url frame_index
-			$(img).appendTo \body
+			$(img).appendTo @frame_div frame_index
 
 
 
