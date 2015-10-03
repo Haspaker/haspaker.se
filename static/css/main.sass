@@ -134,9 +134,10 @@ section
 
 	.divider
 		display: block
-		margin: 50px auto
+		margin: 50px auto 50px
 		width: 80%
 		max-width: 430px
+		height: 0
 
 	&.about
 
@@ -146,11 +147,14 @@ section
 			width: 100%
 			max-width: 500px
 			margin: 30px auto 40px
+			visibility: hidden
+
 			img
 				width: 100%
 
 
 			.swirl, .background-swirl
+				display: none
 				position: absolute
 				top: -47%
 				right: 2.75%
@@ -196,7 +200,7 @@ section
 			.content
 
 				a
-					color: $scheme-lime
+					color: #9e0b0f
 
 			.quoted::before
 				//content: "❞"
@@ -270,14 +274,13 @@ section
 			margin-bottom: 15px
 
 	&.skills
-		$text-color: darken( #9e0b0f, 10 )
+		$text-color: white
 		padding: 60px 10%
 		width: calc( 100% - 350px )
 		float: right
 		color: $text-color
 
 		.title 
-			color:  #9e0b0f
 			font-family: $title-font
 			font-weight: bold
 			font-size: 18px

@@ -103,18 +103,21 @@ section {
   padding: 60px 15%; }
   section .divider {
     display: block;
-    margin: 50px auto;
+    margin: 50px auto 50px;
     width: 80%;
-    max-width: 430px; }
+    max-width: 430px;
+    height: 0; }
   section.about .full-name {
     display: block;
     position: relative;
     width: 100%;
     max-width: 500px;
-    margin: 30px auto 40px; }
+    margin: 30px auto 40px;
+    visibility: hidden; }
     section.about .full-name img {
       width: 100%; }
     section.about .full-name .swirl, section.about .full-name .background-swirl {
+      display: none;
       position: absolute;
       top: -47%;
       right: 2.75%;
@@ -148,7 +151,7 @@ section {
       font-weight: bold;
       margin-bottom: 20px; }
     section.about .about-box .content a {
-      color: #CFF09E; }
+      color: #9e0b0f; }
     section.about .about-box .quoted::before {
       position: relative;
       font-size: 25px;
@@ -207,9 +210,8 @@ section {
     padding: 60px 10%;
     width: calc( 100% - 350px );
     float: right;
-    color: #6e080a; }
+    color: white; }
     section.skills .title {
-      color: #9e0b0f;
       font-family: "Arial Black", Gadget, sans-serif;
       font-weight: bold;
       font-size: 18px; }
@@ -238,7 +240,7 @@ section {
           background: #560608; }
         section.skills .skill-graph .skill .value {
           padding-left: 10px;
-          color: #6e080a; }
+          color: white; }
     section.skills .experiences, section.skills .graphs {
       padding-left: 85px; }
     section.skills .timeline .event {
