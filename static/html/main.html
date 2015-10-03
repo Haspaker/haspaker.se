@@ -13,7 +13,6 @@
 	<link rel="icon" type="image/png" href="/img/favicons/favicon-16x16.png" sizes="16x16" />
 
 	<link rel="stylesheet" type="text/css" href="/css/reset.css"/>
-	<link rel="stylesheet" type="text/css" href="/css/main.css"/>
 	<link rel="stylesheet" type="text/css" href="/css/typicons.css"/>
 
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -22,7 +21,16 @@
 	<script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"></script>
 
 	<script src="/lib/prelude-min.js"></script>
+
+
+	<link rel="stylesheet" type="text/css" href="/css/main.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/cube.css"/>
+
 	<script src="/js/main.js"></script>
+	<script src="/js/cube.js"></script>
+
+	<script src="https://use.typekit.net/qpv4xgf.js"></script>
+	<script>try{Typekit.load({ async: true });}catch(e){}</script>
 
 	<!-- Google Analytics -->
 	<script>
@@ -57,9 +65,10 @@
 
 			<img class="arrow" src="/img/arrow-red.png"/>
 			<div class="pages">
-				<div class="page-label selected">About me</div>
-				<div class="page-label">Projects</div>
+				<div class="page-label selected">Portfolio</div>
+				<!--div class="page-label">Projects</div-->
 				<div class="page-label">Skills</div>
+				<!--div class="page-label">Contact</div-->
 				<div class="page-label">Contact</div>
 			</div>
 
@@ -72,16 +81,32 @@
 				<img src="/img/full-name.png"></img>
 			</div>
 
-			<div class="introduction"> Web developer<br>based in <span class="city">Stockholm</span> </div>
+			<div id="cube-container">
+					<div class="rotate left">left</div>
+					<div class="rotate right">right</div>
+					<div class="cube">
+						<div class="face front"></div>
+						<div class="face left"></div>
+						<div class="face bottom"></div>
+						<div class="face right"></div>
+						<div class="face top"></div>
+						<div class="face back"></div>
+					</div>
+			</div>
+
+			<div class="introduction"> 
+				Web developer<br>based in <span class="city">Stockholm</span>
+				<br><br>
+			 </div>
 
 			<img class="divider" src="/img/divider.png"/>
 
-			<div class="about-box">
+			<!--div class="about-box">
 				<div class="title">About me</div> 
 				<div class="content quoted"> Born  1995 in Stockholm. I have been programming in various languages and environments for almost 10 years. 
 				<br><br>
 				Visit <a href="#projects">this page</a> to browse some of my open source projects. </div>
-			</div>
+			</div-->
 
 		</section>
 

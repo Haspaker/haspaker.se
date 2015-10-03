@@ -1,0 +1,55 @@
+#cube-container
+
+	$size: 120px
+
+	position: relative
+	top: -100px
+	display: block
+	margin: 0 auto
+	width: $size
+	height: $size
+	perspective: 1000px
+	transform-style: preserve-3d
+	text-align: center
+
+	.rotate
+		display: inline-block
+		position: relative
+		color: white
+		&.left
+			left: -100px
+		&.right
+			right: -100px
+
+	.cube
+		width: 100%
+		height: 100%
+		transition: box-shadow 2s
+		transform-style: preserve-3d
+	
+		&.selected
+			.face
+				border: 1px solid rgba(white, 0)
+				box-shadow: 0px 0px 7px 0px rgba(#9e0b0f, 1)
+		.face
+			position: absolute
+			top: 0
+			left: 0
+			width: $size
+			height: $size
+			background: rgba(black, 0.2)
+			border: 2px solid rgba(white, 0.75)
+			transition: box-shadow 0.4s, border 0.4s
+
+		.front
+			transform: rotateY(  0deg )  translateZ( $size/2 )
+		.back
+			transform: rotateX( 180deg ) translateZ( $size/2 )
+		.right
+			transform: rotateY(  90deg ) translateZ( $size/2 )
+		.left 
+			transform: rotateY( -90deg ) translateZ( $size/2 )
+		.top
+			transform: rotateX(  90deg ) translateZ( $size/2 )
+		.bottom 
+			transform: rotateX( -90deg ) translateZ( $size/2 )

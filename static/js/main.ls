@@ -125,8 +125,8 @@ class Navigation extends Backbone.Model
 
 	hashlinks:
 		about: 0
-		projects: 1
-		skills: 2
+		skills: 1
+		projects: 2
 		contact: 3
 
 	initialize: ->
@@ -165,8 +165,8 @@ class NavigationView extends Backbone.View
 
 	pages:
 		* AboutPageView
-		* ProjectsPageView
 		* SkillsPageView
+		* ProjectsPageView
 		* ContactPageView
 
 	initialize: ->
@@ -198,7 +198,7 @@ class NavigationView extends Backbone.View
 		$selected_page_label = @get_selected_page_label()
 
 		with $selected_page_label[0].getBoundingClientRect()
-			@$( \.arrow ).css top: ..top + 5
+			@$( \.arrow ).css top: ..top + 8
 			@$( \.arrow ).css left: ..right + 10
 
 	move_arrow: ->
@@ -206,7 +206,7 @@ class NavigationView extends Backbone.View
 		$selected_page_label = @get_selected_page_label()
 
 		with $selected_page_label[0].getBoundingClientRect()
-			@$( \.arrow ).stop().animate ( top: ..top + 5, left: ..right + 10 ),
+			@$( \.arrow ).stop().animate ( top: ..top + 8, left: ..right + 10 ),
 				1500,
 				\easeOutElastic
 
