@@ -23,15 +23,15 @@
     transform-style: preserve-3d; }
     #cube-container .cube.selected .face {
       border: 1px solid rgba(255, 255, 255, 0);
-      box-shadow: 0px 0px 7px 0px #9e0b0f; }
+      box-shadow: 0px 0px 7px 0px orange; }
     #cube-container .cube .face {
       position: absolute;
       top: 0;
       left: 0;
       width: 120px;
       height: 120px;
-      background: rgba(0, 0, 0, 0.2);
-      border: 2px solid rgba(255, 255, 255, 0.75);
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.75);
       transition: box-shadow 0.4s, border 0.4s; }
     #cube-container .cube .front {
       transform: rotateY(0deg) translateZ(60px); }
