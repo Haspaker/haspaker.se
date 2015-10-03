@@ -4,6 +4,8 @@ $scheme-seaweed: #79BD9A
 $scheme-grass: #A8DBA8
 $scheme-lime: #CFF09E
 
+$dark-red: #9e0b0f
+
 $body-background: #111
 $side-padding: 30px
 $max-content-width: 1300px
@@ -133,7 +135,7 @@ section
 	position: relative
 	display: none
 	color: black
-	padding: 0px 15%
+	padding: 20px 15%
 
 
 	.divider
@@ -145,13 +147,16 @@ section
 
 	&.about
 
+		position: static
+		padding-top: 60px
+
 		.full-name
 			display: block // margin: auto only centers block elements
 			position: relative
 			width: 100%
 			max-width: 500px
 			margin: 30px auto 40px
-			visibility: hidden
+			display: none
 
 			img
 				width: 100%
@@ -175,6 +180,7 @@ section
 			display: block // margin: auto only centers block elements
 			width: 80%
 			margin: 0 auto
+			margin-top: 75px
 			//font-family: Sanchez, serif
 			font-size: 25px
 			line-height: 1.2
@@ -182,36 +188,27 @@ section
 			//text-shadow: 0 0 5px rgba(black, 0.2)
 
 			.city
-				//color: $scheme-lime
 				font-weight: normal
 
-		.about-box
-			font-size: 16px
-			padding: 20px 35px 35px
+		.circle
+			$width: 75px
 			display: block
-			margin: 0 auto
-			width: 70%
-			min-height: 175px
-			color: black
-			line-height: 1.15
-			
-			.title
-				font-family: $title-font
-				font-weight: bold
-				font-weight: bold
-				margin-bottom: 20px
+			margin: 60px auto 20px
+			width: $width
+			height: $width
+			background-image: url(/img/red-arrowsquare-large.png)
+			background-position: center center
+			background-size: 100% auto
+			background-repeat: no-repeat
+			//border-radius: 50px
+		.circle-title
+			width: 100%
+			text-align: center
+			color: $dark-red
+			font-size: 22px
 
-			.content
 
-				a
-					color: #9e0b0f
 
-			.quoted::before
-				//content: "❞"
-				position: relative
-				font-size: 25px
-				margin-right: 15px
-				float: left
 
 	&.contact
 

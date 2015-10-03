@@ -47,7 +47,7 @@ class Cube extends Backbone.Model
 
         new_spin =
             horizontal: (spin.horizontal + 0.35) % 360
-            vertical: Math.sin(Date.now()*0.5e-3) * 30 #(spin.vertical + 0.1) % 360
+            vertical: ( spin.vertical * 19 + Math.sin(Date.now()*0.5e-3) * 30 ) / 20 #(spin.vertical + 0.1) % 360
 
         @set \spin, new_spin
 

@@ -104,63 +104,60 @@ section {
   position: relative;
   display: none;
   color: black;
-  padding: 0px 15%; }
+  padding: 20px 15%; }
   section .divider {
     display: block;
     margin: 70px auto 30px;
     width: 80%;
     max-width: 430px;
     height: 0; }
-  section.about .full-name {
-    display: block;
-    position: relative;
-    width: 100%;
-    max-width: 500px;
-    margin: 30px auto 40px;
-    visibility: hidden; }
-    section.about .full-name img {
-      width: 100%; }
-    section.about .full-name .swirl, section.about .full-name .background-swirl {
-      display: none;
-      position: absolute;
-      top: -47%;
-      right: 2.75%;
-      width: 45%;
-      overflow: hidden; }
-      section.about .full-name .swirl img, section.about .full-name .background-swirl img {
-        width: 100%; }
-    section.about .full-name .background-swirl {
-      opacity: 0.2; }
-  section.about .introduction {
-    display: block;
-    width: 80%;
-    margin: 0 auto;
-    font-size: 25px;
-    line-height: 1.2;
-    text-align: center; }
-    section.about .introduction .city {
-      font-weight: normal; }
-  section.about .about-box {
-    font-size: 16px;
-    padding: 20px 35px 35px;
-    display: block;
-    margin: 0 auto;
-    width: 70%;
-    min-height: 175px;
-    color: black;
-    line-height: 1.15; }
-    section.about .about-box .title {
-      font-family: "Arial Black", Gadget, sans-serif;
-      font-weight: bold;
-      font-weight: bold;
-      margin-bottom: 20px; }
-    section.about .about-box .content a {
-      color: #9e0b0f; }
-    section.about .about-box .quoted::before {
+  section.about {
+    position: static;
+    padding-top: 60px; }
+    section.about .full-name {
+      display: block;
       position: relative;
+      width: 100%;
+      max-width: 500px;
+      margin: 30px auto 40px;
+      display: none; }
+      section.about .full-name img {
+        width: 100%; }
+      section.about .full-name .swirl, section.about .full-name .background-swirl {
+        display: none;
+        position: absolute;
+        top: -47%;
+        right: 2.75%;
+        width: 45%;
+        overflow: hidden; }
+        section.about .full-name .swirl img, section.about .full-name .background-swirl img {
+          width: 100%; }
+      section.about .full-name .background-swirl {
+        opacity: 0.2; }
+    section.about .introduction {
+      display: block;
+      width: 80%;
+      margin: 0 auto;
+      margin-top: 75px;
       font-size: 25px;
-      margin-right: 15px;
-      float: left; }
+      line-height: 1.2;
+      text-align: center; }
+      section.about .introduction .city {
+        font-weight: normal; }
+    section.about .circle {
+      display: block;
+      margin: 60px auto 20px;
+      width: 75px;
+      height: 75px;
+      background-image: url(/img/red-arrowsquare-large.png);
+      background-position: center center;
+      background-size: 100% auto;
+      background-repeat: no-repeat; }
+    section.about .circle-title {
+      width: 100%;
+      text-align: center;
+      color: #9e0b0f;
+      font-size: 22px; }
   section.contact {
     text-align: center;
     font-size: 18px; }

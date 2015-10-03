@@ -20,7 +20,7 @@ class PageView extends Backbone.View
 		if @model.get \active => @show!
 		else => @hide!
 
-	show: -> @$el.delay(500).fadeIn()
+	show: -> @$el.fadeIn()
 
 	hide: ->  @$el.stop().hide!
 
@@ -105,7 +105,7 @@ class SkillsPageView extends PageView
 	show: -> 
 		window.site.set \drapery, true
 		@show_graph_bars!
-		@$el.delay(500).fadeIn() # Pass 0s duration to make delayable animation
+		@$el.fadeIn() # Pass 0s duration to make delayable animation
 
 	hide: -> 
 		window.site.set \drapery, false
@@ -166,8 +166,8 @@ class NavigationView extends Backbone.View
 	pages:
 		* AboutPageView
 		* SkillsPageView
-		* ProjectsPageView
 		* ContactPageView
+		* ProjectsPageView
 
 	initialize: ->
 
