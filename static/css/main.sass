@@ -4,7 +4,7 @@ $scheme-seaweed: #79BD9A
 $scheme-grass: #A8DBA8
 $scheme-lime: #CFF09E
 
-$body-background: #212121
+$body-background: #111
 $side-padding: 30px
 $max-content-width: 1300px
 
@@ -47,7 +47,7 @@ body
 	width: 100%
 	height: 100%
 	display: block
-	padding: 0 $side-padding
+	padding: 0 $side-padding 0 0
 
 .navigation
 
@@ -57,9 +57,7 @@ body
 	padding: 15px 0 0 40px
 	text-align: right
 	font-size: 25px
-	color: white
-	font-family: $title-font
-	font-weight: bold
+	color: black
 	z-index: 1001
 
 	.arrow
@@ -69,15 +67,15 @@ body
 	.pages
 
 		.page-label
-			opacity: 0.7
-			transition: 1s
+			opacity: 1
 			margin-top: 25px
 			cursor: pointer
-			transition: 0.33s
+			//transition: 0.33s
 			&:hover
 				opacity: 1
 			&.selected
 				opacity: 1
+				color: #9e0b0f
 
 
 .main-content
@@ -86,10 +84,12 @@ body
 	margin: 0 auto
 	width: 100%
 	min-height: 100%
-	background-image: url(/img/background.svg)
-	background-size: cover
+	background: white
+	background-image: url(http://cdn.backgroundhost.com/backgrounds/subtlepatterns/cubes.png) //url(/img/background.svg)
+	//background-size: cover
 	overflow: auto // Clear floats to avoid collapse
 	overflow-x: hidden
+	color: black
 
 	.edge
 		position: absolute
@@ -103,6 +103,7 @@ body
 			height: 100%
 		&.left 
 			left: 0
+			display: none
 		&.right 
 			right: 0
 		.ribbon
@@ -119,7 +120,7 @@ body
 				background-image: url( /img/ribbon-right.png )
 
 	&.drapery .edge.right
-		width: calc( 100% - 240px )
+		width: calc( 100% - 350px )
 
 section
 
@@ -127,7 +128,7 @@ section
 
 	position: relative
 	display: none
-	color: white
+	color: black
 	padding: 60px 15%
 
 
@@ -170,10 +171,10 @@ section
 			font-size: 25px
 			line-height: 1.2
 			text-align: center
-			text-shadow: 0 0 5px rgba(black, 0.2)
+			//text-shadow: 0 0 5px rgba(black, 0.2)
 
 			.city
-				color: $scheme-lime
+				//color: $scheme-lime
 				font-weight: normal
 
 		.about-box
@@ -183,12 +184,9 @@ section
 			margin: 0 auto
 			width: 70%
 			min-height: 175px
-			color: white
+			color: black
 			line-height: 1.15
-			background: rgba(black, 0.4)
-			border-radius: 20px
-			border: 10px solid rgba(black, 0.1)
-
+			
 			.title
 				font-family: $title-font
 				font-weight: bold
@@ -230,9 +228,10 @@ section
 
 		padding: 0
 		padding-bottom: 20px
-		width: calc( 100% - 270px )
+		width: calc( 100% - 350px )
 		float: right
 		padding-top: 25px
+		color: white
 
 		.project-list
 
@@ -271,20 +270,24 @@ section
 			margin-bottom: 15px
 
 	&.skills
+		$text-color: darken( #9e0b0f, 10 )
 		padding: 60px 10%
-		width: calc( 100% - 270px )
+		width: calc( 100% - 350px )
 		float: right
+		color: $text-color
 
 		.title 
+			color:  #9e0b0f
 			font-family: $title-font
 			font-weight: bold
 			font-size: 18px
 
 		.skill-graph
+			$bar-color: darken( #9e0b0f, 15 )
 			margin-top: 15px
 			margin-bottom: 40px
 			position: relative
-			border-left: 4px solid white
+			border-left: 4px solid $bar-color
 
 			// Prevent slight vertical padding for inline elements, it messes with the left border. 
 			// Reset on relevant children
@@ -313,11 +316,11 @@ section
 					white-space: nowrap
 				.bar
 					height: 15px
-					background: white
+					background: $bar-color
 
 				.value
 					padding-left: 10px
-					color: #666
+					color: $text-color
 
 		.experiences, .graphs
 			padding-left: 85px
@@ -339,7 +342,6 @@ section
 
 				.period
 					//font-weight: bold
-					color: white //#666
 					position: absolute
 					top: 17px
 					right: 100%

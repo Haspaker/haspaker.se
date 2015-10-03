@@ -20,7 +20,7 @@ a {
     text-decoration: underline; }
 
 body {
-  background: #212121;
+  background: #111;
   height: 100%;
   font-family: Helvetica;
   font-weight: lighter; }
@@ -29,7 +29,7 @@ body {
   width: 100%;
   height: 100%;
   display: block;
-  padding: 0 30px; }
+  padding: 0 30px 0 0; }
 
 .navigation {
   position: fixed;
@@ -38,23 +38,20 @@ body {
   padding: 15px 0 0 40px;
   text-align: right;
   font-size: 25px;
-  color: white;
-  font-family: "Arial Black", Gadget, sans-serif;
-  font-weight: bold;
+  color: black;
   z-index: 1001; }
   .navigation .arrow {
     width: 16px;
     position: fixed; }
   .navigation .pages .page-label {
-    opacity: 0.7;
-    transition: 1s;
+    opacity: 1;
     margin-top: 25px;
-    cursor: pointer;
-    transition: 0.33s; }
+    cursor: pointer; }
     .navigation .pages .page-label:hover {
       opacity: 1; }
     .navigation .pages .page-label.selected {
-      opacity: 1; }
+      opacity: 1;
+      color: #9e0b0f; }
 
 .main-content {
   position: relative;
@@ -62,10 +59,11 @@ body {
   margin: 0 auto;
   width: 100%;
   min-height: 100%;
-  background-image: url(/img/background.svg);
-  background-size: cover;
+  background: white;
+  background-image: url(http://cdn.backgroundhost.com/backgrounds/subtlepatterns/cubes.png);
   overflow: auto;
-  overflow-x: hidden; }
+  overflow-x: hidden;
+  color: black; }
   .main-content .edge {
     position: absolute;
     top: 0;
@@ -73,11 +71,12 @@ body {
     width: 0;
     height: 100%; }
     .main-content .edge .background-cover {
-      background: #212121;
+      background: #111;
       width: 100%;
       height: 100%; }
     .main-content .edge.left {
-      left: 0; }
+      left: 0;
+      display: none; }
     .main-content .edge.right {
       right: 0; }
     .main-content .edge .ribbon {
@@ -93,14 +92,14 @@ body {
         left: -7px;
         background-image: url(/img/ribbon-right.png); }
   .main-content.drapery .edge.right {
-    width: calc( 100% - 240px ); }
+    width: calc( 100% - 350px ); }
 
 section {
   width: 100%;
   height: 100%;
   position: relative;
   display: none;
-  color: white;
+  color: black;
   padding: 60px 15%; }
   section .divider {
     display: block;
@@ -131,10 +130,8 @@ section {
     margin: 0 auto;
     font-size: 25px;
     line-height: 1.2;
-    text-align: center;
-    text-shadow: 0 0 5px rgba(0, 0, 0, 0.2); }
+    text-align: center; }
     section.about .introduction .city {
-      color: #CFF09E;
       font-weight: normal; }
   section.about .about-box {
     font-size: 16px;
@@ -143,11 +140,8 @@ section {
     margin: 0 auto;
     width: 70%;
     min-height: 175px;
-    color: white;
-    line-height: 1.15;
-    background: rgba(0, 0, 0, 0.4);
-    border-radius: 20px;
-    border: 10px solid rgba(0, 0, 0, 0.1); }
+    color: black;
+    line-height: 1.15; }
     section.about .about-box .title {
       font-family: "Arial Black", Gadget, sans-serif;
       font-weight: bold;
@@ -178,9 +172,10 @@ section {
   section.projects {
     padding: 0;
     padding-bottom: 20px;
-    width: calc( 100% - 270px );
+    width: calc( 100% - 350px );
     float: right;
-    padding-top: 25px; }
+    padding-top: 25px;
+    color: white; }
     section.projects .project-list .project {
       display: block;
       margin: 0 auto;
@@ -210,9 +205,11 @@ section {
       margin-bottom: 15px; }
   section.skills {
     padding: 60px 10%;
-    width: calc( 100% - 270px );
-    float: right; }
+    width: calc( 100% - 350px );
+    float: right;
+    color: #6e080a; }
     section.skills .title {
+      color: #9e0b0f;
       font-family: "Arial Black", Gadget, sans-serif;
       font-weight: bold;
       font-size: 18px; }
@@ -220,7 +217,7 @@ section {
       margin-top: 15px;
       margin-bottom: 40px;
       position: relative;
-      border-left: 4px solid white;
+      border-left: 4px solid #560608;
       line-height: 0;
       width: 0;
       white-space: nowrap; }
@@ -238,10 +235,10 @@ section {
           white-space: nowrap; }
         section.skills .skill-graph .skill .bar {
           height: 15px;
-          background: white; }
+          background: #560608; }
         section.skills .skill-graph .skill .value {
           padding-left: 10px;
-          color: #666; }
+          color: #6e080a; }
     section.skills .experiences, section.skills .graphs {
       padding-left: 85px; }
     section.skills .timeline .event {
@@ -257,7 +254,6 @@ section {
       section.skills .timeline .event .engagement .extra-info {
         color: #666; }
       section.skills .timeline .event .period {
-        color: white;
         position: absolute;
         top: 17px;
         right: 100%;
