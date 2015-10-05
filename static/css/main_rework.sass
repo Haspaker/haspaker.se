@@ -58,9 +58,12 @@ body
 	z-index: 1001
 	color: black
 
+	a:hover
+		text-decoration: none
+
 	.pages
 
-		.page-label
+		.page-label, .external-label
 			display: inline-block
 			cursor: pointer
 			margin-left: 20px
@@ -267,7 +270,6 @@ section.contact
 	.contact-info
 
 		margin: 0 auto
-		font-size: 14px
 		//padding: 20px 0
 		margin-bottom: 20px
 		text-align: center
@@ -298,6 +300,18 @@ section.contact
 
 
 
+.contact-box
+	position: absolute
+	top: 5px
+	right: 15px
+	font-size: 14px
+	text-align: right
+	//color: $scheme-red
+	.title, .content
+		display: inline
+	.contact-info
+		margin-left: 20px
+		margin-top: 5px
 
 
 

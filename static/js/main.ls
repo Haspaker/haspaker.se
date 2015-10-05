@@ -168,7 +168,7 @@ class NavigationView extends Backbone.View
 	el: \.navigation
 
 	events:
-		'click .pages div': (e) -> @select_page $(e.target).index()
+		'click .pages .page-label': (e) -> @select_page $(e.target).index()
 
 	pages:
 		* LandingPageView
