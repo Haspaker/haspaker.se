@@ -90,7 +90,9 @@ class CubeView extends Backbone.View
     update_interval: 5ms
 
     events:
-        'click': -> @rotate_right!
+        'click .left': -> @rotate_right!
+        'click .right': -> @rotate_right!
+        #'click': -> @rotate_right!
 
     spin_modes:
         0: axis:\X, dir: 1
