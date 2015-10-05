@@ -25,6 +25,15 @@ body {
   font-family: "fira-sans-2";
   font-weight: 500; }
 
+.centered-outer {
+  float: left;
+  position: relative;
+  left: 50%; }
+
+.centered-inner {
+  position: relative;
+  left: -50%; }
+
 .background-preloader {
   width: 0;
   height: 0;
@@ -59,12 +68,12 @@ body {
   height: 100%; }
 
 section {
-  padding-top: 40px;
+  padding-top: 50px;
   display: none; }
 
 section.landing .introduction {
   text-align: center;
-  margin-top: 70px;
+  margin-top: 60px;
   font-size: 25px;
   line-height: 1.2; }
 section.landing .go-down {
@@ -129,7 +138,81 @@ section.landing .portfolio {
       section.landing .portfolio .project .description a {
         color: #666; }
         section.landing .portfolio .project .description a:hover {
-          color: #888;
-          text-decoration: none; }
+          color: #888; }
+
+section.skills {
+  padding: 20px 0; }
+  section.skills .title {
+    font-weight: 600;
+    font-size: 22px; }
+  section.skills .skill-graph {
+    margin-top: 15px;
+    margin-bottom: 40px;
+    position: relative;
+    border-left: 4px solid #9e0b0f;
+    line-height: 0;
+    white-space: nowrap; }
+    section.skills .skill-graph .skill {
+      padding: 0;
+      margin-top: 5px; }
+      section.skills .skill-graph .skill .label, section.skills .skill-graph .skill .bar, section.skills .skill-graph .skill .value {
+        display: inline-block;
+        vertical-align: middle; }
+      section.skills .skill-graph .skill .label {
+        line-height: 1;
+        position: absolute;
+        right: 100%;
+        padding-right: 15px;
+        white-space: nowrap; }
+      section.skills .skill-graph .skill .bar {
+        height: 20px;
+        line-height: 20px;
+        color: #999;
+        font-size: 12px;
+        background: #9e0b0f; }
+      section.skills .skill-graph .skill .value {
+        padding-left: 10px;
+        color: #999;
+        display: none; }
+  section.skills .experiences, section.skills .graphs {
+    padding-left: 115px;
+    float: left; }
+  section.skills .graphs {
+    border-right: 1px solid black;
+    padding-right: 30px; }
+  section.skills .timeline .event {
+    position: relative;
+    height: 53px;
+    background-image: url(/img/timeline-large-black.png);
+    background-size: 20px 53px;
+    padding-left: 28px;
+    padding-top: 17px;
+    background-repeat: no-repeat; }
+    section.skills .timeline .event:first-of-type {
+      background-image: url(/img/timeline-large-top-black.png); }
+    section.skills .timeline .event .engagement {
+      font-weight: 600; }
+      section.skills .timeline .event .engagement .extra-info {
+        font-weight: 500; }
+    section.skills .timeline .event .period {
+      position: absolute;
+      top: 17px;
+      right: 100%;
+      padding-right: 10px;
+      white-space: nowrap; }
+    section.skills .timeline .event .location {
+      margin-top: 3px; }
+
+section.contact .contact-info {
+  margin: 0 auto;
+  font-size: 14px;
+  margin-bottom: 20px;
+  text-align: center; }
+  section.contact .contact-info .typcn {
+    display: none; }
+  section.contact .contact-info:first-child {
+    border-top: none; }
+  section.contact .contact-info .title {
+    margin-bottom: 10px; }
 
 /*# sourceMappingURL=main_rework.css.map */
