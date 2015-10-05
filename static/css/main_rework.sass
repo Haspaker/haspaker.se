@@ -69,6 +69,8 @@ body
 			margin-left: 20px
 			margin-top: 10px
 			//padding-top: 20px
+			&:hover
+				//color: #0099ff
 			&.selected
 				color: $scheme-red
 
@@ -301,12 +303,15 @@ section.contact
 
 
 .contact-box
+	z-index: 1005
 	position: absolute
 	top: 5px
 	right: 15px
 	font-size: 14px
 	text-align: right
 	//color: $scheme-red
+	.title
+		color: $scheme-red //#0099ff
 	.title, .content
 		display: inline
 	.contact-info
@@ -314,6 +319,9 @@ section.contact
 		margin-top: 5px
 
 
+@media (max-width: 650px )
+	.contact-box
+		position: relative !important
 
 
 

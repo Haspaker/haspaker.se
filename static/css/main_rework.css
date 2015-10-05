@@ -217,15 +217,22 @@ section.contact .contact-info {
     margin-bottom: 10px; }
 
 .contact-box {
+  z-index: 1005;
   position: absolute;
   top: 5px;
   right: 15px;
   font-size: 14px;
   text-align: right; }
+  .contact-box .title {
+    color: #9e0b0f; }
   .contact-box .title, .contact-box .content {
     display: inline; }
   .contact-box .contact-info {
     margin-left: 20px;
     margin-top: 5px; }
+
+@media (max-width: 650px) {
+  .contact-box {
+    position: relative !important; } }
 
 /*# sourceMappingURL=main_rework.css.map */
