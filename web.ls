@@ -1,7 +1,7 @@
 express = require \express
 
 const static_dir = './static'
-const homepage = static_dir + '/html/main.html'
+const homepage = static_dir + '/html/main_rework.html'
 
 app = express()
 

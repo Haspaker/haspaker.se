@@ -1,0 +1,139 @@
+html {
+  box-sizing: border-box;
+  height: 100%; }
+  html *, html *:before, html *:after {
+    box-sizing: inherit; }
+
+b {
+  font-weight: bold; }
+
+em {
+  font-style: italic; }
+
+u {
+  text-decoration: underline; }
+
+a {
+  text-decoration: none;
+  color: inherit; }
+  a:hover {
+    text-decoration: underline; }
+
+body {
+  background: url(http://cdn.backgroundhost.com/backgrounds/subtlepatterns/cubes.png);
+  height: 100%;
+  font-family: "fira-sans-2";
+  font-weight: 500; }
+
+.background-preloader {
+  width: 0;
+  height: 0;
+  opacity: 0;
+  background: url(http://cdn.backgroundhost.com/backgrounds/subtlepatterns/broken_noise.png); }
+
+.navigation {
+  position: relative;
+  width: 100%;
+  padding-top: 25px;
+  height: 80px;
+  text-align: center;
+  font-size: 30px;
+  color: black;
+  z-index: 1001;
+  color: black; }
+  .navigation .pages .page-label {
+    display: inline;
+    opacity: 1;
+    cursor: pointer;
+    margin-left: 20px; }
+    .navigation .pages .page-label:hover {
+      opacity: 1; }
+    .navigation .pages .page-label.selected {
+      opacity: 1;
+      color: #ab111a; }
+
+.main-wrapper {
+  width: 100%;
+  padding: 0; }
+
+.main-content {
+  position: relative;
+  display: block;
+  margin: 0 auto;
+  height: 100%; }
+
+section {
+  padding-top: 30px;
+  display: none; }
+
+section.landing .introduction {
+  text-align: center;
+  margin-top: 80px;
+  font-size: 25px;
+  line-height: 1.2; }
+section.landing .go-down {
+  display: block;
+  margin: 100px auto 0px;
+  cursor: pointer; }
+  section.landing .go-down .go-down-image {
+    display: block;
+    margin: auto;
+    width: 55px;
+    height: 55px;
+    background-image: url(/img/red-arrowsquare-large.png);
+    background-position: center center;
+    background-size: 100% auto;
+    background-repeat: no-repeat; }
+  section.landing .go-down .go-down-title {
+    margin-top: 20px;
+    text-align: center;
+    color: #ab111a;
+    font-size: 22px; }
+section.landing .go-back {
+  display: block;
+  margin: 0px auto 50px;
+  cursor: pointer; }
+  section.landing .go-back .go-back-image {
+    transform: scaleY(-1);
+    -webkit-transform: scaleY(-1);
+    display: block;
+    margin: auto;
+    width: 55px;
+    height: 55px;
+    background-image: url(/img/red-arrowsquare-lighted2.png);
+    background-position: center center;
+    background-size: 100% auto;
+    background-repeat: no-repeat; }
+section.landing .portfolio {
+  display: none;
+  background: url(http://cdn.backgroundhost.com/backgrounds/subtlepatterns/broken_noise.png);
+  padding: 0 40px 40px;
+  width: 100%; }
+  section.landing .portfolio .project {
+    display: block;
+    margin: 0 auto;
+    position: relative;
+    width: 90%;
+    max-width: 500px;
+    margin-top: 20px; }
+    section.landing .portfolio .project img {
+      display: block;
+      width: 100%; }
+    section.landing .portfolio .project .description {
+      padding: 20px 0px;
+      color: #F0F0F0;
+      top: 0;
+      right: 0;
+      width: 100%;
+      line-height: 1.2; }
+      section.landing .portfolio .project .description .title {
+        font-size: 22px;
+        margin-bottom: 10px;
+        font-weight: 600; }
+      section.landing .portfolio .project .description a {
+        color: #666; }
+        section.landing .portfolio .project .description a:hover {
+          color: #888;
+          text-decoration: none; }
+
+/*# sourceMappingURL=main_rework.css.map */

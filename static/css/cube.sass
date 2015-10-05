@@ -9,25 +9,31 @@
 	width: $size
 	height: $size
 	perspective: 1000px
+	-webkit-perspective: 1000px
 	transform-style: preserve-3d
+	-webkit-transform-style: preserve-3d
 	text-align: center
+	cursor: pointer
 
 	.rotate
 		cursor: pointer
 		font-size: 20px
 		display: inline-block
 		position: relative
-		color: white
+		display: none
 		&.left
-			left: -100px
+			left: -120px
+			top: 70px
 		&.right
-			right: -100px
+			right: -120px
+			top: 70px
 
 	.cube
 		width: 100%
 		height: 100%
 		transition: box-shadow 2s
 		transform-style: preserve-3d
+		-webkit-transform-style: preserve-3d
 	
 		&.selected
 			.face
@@ -43,19 +49,28 @@
 			line-height: $size
 			text-align: center
 			color: white
-			background: rgba(black, 0.5)
+			background: rgba(#222, 0.7)
 			border: 1px solid rgba(white, 0.75)
 			transition: box-shadow 0.4s, border 0.4s, background 0.4s
+			img
+				width: 80%
+				margin: 10%
 
 		.front
+			-webkit-transform: rotateY(  0deg )  translateZ( $size/2 )
 			transform: rotateY(  0deg )  translateZ( $size/2 )
 		.back
 			transform: rotateX( 180deg ) translateZ( $size/2 )
+			-webkit-transform: rotateX( 180deg ) translateZ( $size/2 )
 		.right
 			transform: rotateY(  90deg ) translateZ( $size/2 )
+			-webkit-transform: rotateY(  90deg ) translateZ( $size/2 )
 		.left 
 			transform: rotateY( -90deg ) translateZ( $size/2 )
+			-webkit-transform: rotateY( -90deg ) translateZ( $size/2 )
 		.top
 			transform: rotateX(  90deg ) translateZ( $size/2 )
+			-webkit-transform: rotateX(  90deg ) translateZ( $size/2 )
 		.bottom 
 			transform: rotateX( -90deg ) translateZ( $size/2 )
+			-webkit-transform: rotateX( -90deg ) translateZ( $size/2 )

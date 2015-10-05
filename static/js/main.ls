@@ -25,13 +25,15 @@ class PageView extends Backbone.View
 	hide: ->  @$el.stop().hide!
 
 
-class AboutPageView extends PageView
+class LandingPageView extends PageView
 
-	el: \section.about
+	el: \section.landing
 
-	initialize: ->
-		@nameView = new NameView model: @model
-		super ...
+	events: ->
+		'click .go-down:not(.go-back)': @scroll_to_portfolio
+		'click .go-back': @hide_portfolio
+
+	initialize: -> super ...
 
 	show: ->
 		with window.navigation
@@ -39,32 +41,22 @@ class AboutPageView extends PageView
 			if ..previous("page_index") is ..hashlinks.about => @$el.show!
 			else super ...
 
+	scroll_to_portfolio: ->
+		height = $('.main-content').height()
+		$('.portfolio').show()
+		$('.portfolio').css position: \absolute, top: height, left: 0
+		$('.greeting').css visibility: \hidden 
+		$('.main-content').animate top: -$('.main-content').height()
+
+	hide_portfolio: ->
+		$('.go-down-title').text('View portfolio')
+		$('.portfolio').hide()
+		$('.greeting').css visibility: \visible 
+		$('.main-content').animate top: 0
+
 class ContactPageView extends PageView
 
 	el: \section.contact
-
-class ProjectsPageView extends PageView
-
-	el: \section.projects
-
-	show: -> 
-		window.site.set \drapery, true
-		@prepare_slide_in_projects!
-		setTimeout @slide_in_projects, 1000
-
-	hide: -> 
-		window.site.set \drapery, false
-		@$el.hide!
-
-	prepare_slide_in_projects: ~>
-		@$el.show!
-		$(\.project).each ->
-			length_to_slide = $(window).width() - this.getBoundingClientRect().left
-			$(this).css left: length_to_slide
-
-	slide_in_projects: ~>
-		$(\.project).each (i) ->
-			$(this).delay(500*i).animate left: 0, 1000, \easeOutBack
 
 class SkillsPageView extends PageView
 
@@ -121,13 +113,11 @@ class Navigation extends Backbone.Model
 		* Page
 		* Page
 		* Page
-		* Page
 
 	hashlinks:
-		about: 0
+		landing: 0
 		skills: 1
-		projects: 2
-		contact: 3
+		contact: 2
 
 	initialize: ->
 
@@ -164,10 +154,9 @@ class NavigationView extends Backbone.View
 		'click .pages div': (e) -> @select_page $(e.target).index()
 
 	pages:
-		* AboutPageView
+		* LandingPageView
 		* SkillsPageView
 		* ContactPageView
-		* ProjectsPageView
 
 	initialize: ->
 

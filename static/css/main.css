@@ -20,7 +20,7 @@ a {
     text-decoration: underline; }
 
 body {
-  background: #111;
+  background: url(http://cdn.backgroundhost.com/backgrounds/subtlepatterns/broken_noise.png);
   height: 100%;
   font-family: "fira-sans-2";
   font-weight: bold;
@@ -28,9 +28,8 @@ body {
 
 .main-wrapper {
   width: 100%;
-  height: 100%;
   display: block;
-  padding: 0 0 0 0; }
+  padding: 0 0 500px 0; }
 
 .navigation {
   position: fixed;
@@ -152,7 +151,8 @@ section {
       background-image: url(/img/red-arrowsquare-large.png);
       background-position: center center;
       background-size: 100% auto;
-      background-repeat: no-repeat; }
+      background-repeat: no-repeat;
+      cursor: pointer; }
     section.about .circle-title {
       width: 100%;
       text-align: center;

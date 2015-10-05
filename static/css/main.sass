@@ -40,7 +40,7 @@ a
 
 body
 	//position: relative
-	background: $body-background
+	background: url(http://cdn.backgroundhost.com/backgrounds/subtlepatterns/broken_noise.png) //$body-background
 	height: 100%
 	font-family: "fira-sans-2"
 	font-weight: bold
@@ -48,9 +48,9 @@ body
 
 .main-wrapper
 	width: 100%
-	height: 100%
+	//height: 100%
 	display: block
-	padding: 0 0 0 0
+	padding: 0 0 500px 0
 
 .navigation
 
@@ -200,6 +200,9 @@ section
 			background-position: center center
 			background-size: 100% auto
 			background-repeat: no-repeat
+			cursor: pointer
+			&:hover
+				//§background-image: url(/img/red-arrowsquare-large.png)
 			//border-radius: 50px
 		.circle-title
 			width: 100%

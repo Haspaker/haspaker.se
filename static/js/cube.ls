@@ -7,6 +7,7 @@ class Cube extends Backbone.Model
     width: 100px
     height: 100px
     update_interval: 5ms
+    i: 0
 
     defaults:
         mouse: x:0px y:0px 
@@ -43,8 +44,6 @@ class Cube extends Backbone.Model
     spin_around: ~>
         spin = @get \spin
 
-        console.log Math.abs( Math.sin(Date.now()*1e-4) ) * 360
-
         new_spin =
             horizontal: (spin.horizontal + 0.35) % 360
             vertical: ( spin.vertical * 19 + Math.sin(Date.now()*0.5e-3) * 30 ) / 20 #(spin.vertical + 0.1) % 360
@@ -72,6 +71,17 @@ class Cube extends Backbone.Model
         rotation_position = @get(\rotation_position)
         @set \rotation, rotation + (rotation_position*90 - rotation) / 50
 
+    rotate_left: ~>
+        if @get(\rotation) < @get(\rotation_position) * 90 + 20
+            @set \rotation_position, 
+                @get(\rotation_position) - 1
+
+    rotate_right: ~>
+        if @get(\rotation) > @get(\rotation_position) * 90 - 20
+            @set \rotation_position, 
+                @get(\rotation_position) + 1
+
+
 
 class CubeView extends Backbone.View
 
@@ -80,8 +90,7 @@ class CubeView extends Backbone.View
     update_interval: 5ms
 
     events:
-        'click .left': -> @rotate_left!
-        'click .right': -> @rotate_right!
+        'click': -> @rotate_right!
 
     spin_modes:
         0: axis:\X, dir: 1
@@ -95,8 +104,9 @@ class CubeView extends Backbone.View
 
     add_listeners: ->
         @listenTo @model, \change:selected, @select_deselect
-        $ \body 
-            .mousemove @update_mouse
+        $ \body .mousemove @update_mouse
+        @$el.click @mouse_click
+        #$ \body .click @mouse_click
 
     update_mouse: (mouse_event) ~>
         mouse = x: mouse_event.pageX, y: mouse_event.pageY
@@ -132,20 +142,16 @@ class CubeView extends Backbone.View
 
         @$(\.cube).css 'transform': 
             horizontal_rotation_css + main_vertical_rotation_css + secondary_vertical_rotation_css
+        @$(\.cube).css '-webkit-transform': 
+            horizontal_rotation_css + main_vertical_rotation_css + secondary_vertical_rotation_css
 
     select_deselect: ->
         if @model.get \selected => @$(\.cube).addClass \selected
         else => @$(\.cube).removeClass \selected
 
-    rotate_left: ~>
-        if @model.get(\rotation) > @model.get(\rotation_position) * 90 - 10
-            @model.set \rotation_position, 
-                @model.get(\rotation_position) - 1
+    rotate_left: ~> @model.rotate_left!
 
-    rotate_right: ~>
-        if @model.get(\rotation) > @model.get(\rotation_position) * 90 - 10
-            @model.set \rotation_position, 
-                @model.get(\rotation_position) + 1
+    rotate_right: ~> @model.rotate_right!
 
 
 
