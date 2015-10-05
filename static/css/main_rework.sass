@@ -1,7 +1,5 @@
 
-$scheme-red: #ab111a
-
-$nav-height: 80px
+$scheme-red: #9e0b0f
 
 @mixin stretch
 	width: 100%
@@ -45,8 +43,7 @@ body
 .navigation
 	position: relative
 	width: 100%
-	padding-top: 25px
-	height: $nav-height
+	padding: 25px
 	text-align: center
 	font-size: 30px
 	color: black
@@ -56,15 +53,12 @@ body
 	.pages
 
 		.page-label
-			display: inline
-			opacity: 1
+			display: inline-block
 			cursor: pointer
 			margin-left: 20px
-			//transition: 0.33s
-			&:hover
-				opacity: 1
+			margin-top: 10px
+			//padding-top: 20px
 			&.selected
-				opacity: 1
 				color: $scheme-red
 
 .main-wrapper
@@ -79,7 +73,7 @@ body
 
 
 section
-	padding-top: 30px
+	padding-top: 40px
 	display: none
 
 section.landing
@@ -87,7 +81,7 @@ section.landing
 	.introduction
 
 		text-align: center
-		margin-top: 80px
+		margin-top: 70px
 		font-size: 25px
 		line-height: 1.2
 
@@ -112,6 +106,9 @@ section.landing
 			text-align: center
 			color: $scheme-red
 			font-size: 22px
+
+		&:hover .go-down-image
+			//background-image: url(/img/red-arrowhead-large.png)
 
 	.go-back
 		display: block

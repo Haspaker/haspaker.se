@@ -34,23 +34,19 @@ body {
 .navigation {
   position: relative;
   width: 100%;
-  padding-top: 25px;
-  height: 80px;
+  padding: 25px;
   text-align: center;
   font-size: 30px;
   color: black;
   z-index: 1001;
   color: black; }
   .navigation .pages .page-label {
-    display: inline;
-    opacity: 1;
+    display: inline-block;
     cursor: pointer;
-    margin-left: 20px; }
-    .navigation .pages .page-label:hover {
-      opacity: 1; }
+    margin-left: 20px;
+    margin-top: 10px; }
     .navigation .pages .page-label.selected {
-      opacity: 1;
-      color: #ab111a; }
+      color: #9e0b0f; }
 
 .main-wrapper {
   width: 100%;
@@ -63,12 +59,12 @@ body {
   height: 100%; }
 
 section {
-  padding-top: 30px;
+  padding-top: 40px;
   display: none; }
 
 section.landing .introduction {
   text-align: center;
-  margin-top: 80px;
+  margin-top: 70px;
   font-size: 25px;
   line-height: 1.2; }
 section.landing .go-down {
@@ -87,7 +83,7 @@ section.landing .go-down {
   section.landing .go-down .go-down-title {
     margin-top: 20px;
     text-align: center;
-    color: #ab111a;
+    color: #9e0b0f;
     font-size: 22px; }
 section.landing .go-back {
   display: block;

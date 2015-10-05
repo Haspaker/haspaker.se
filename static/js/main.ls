@@ -42,14 +42,15 @@ class LandingPageView extends PageView
 			else super ...
 
 	scroll_to_portfolio: ->
+
 		height = $('.main-content').height()
+		$('body').scrollTop 0
 		$('.portfolio').show()
 		$('.portfolio').css position: \absolute, top: height, left: 0
 		$('.greeting').css visibility: \hidden 
 		$('.main-content').animate top: -$('.main-content').height()
 
 	hide_portfolio: ->
-		$('.go-down-title').text('View portfolio')
 		$('.portfolio').hide()
 		$('.greeting').css visibility: \visible 
 		$('.main-content').animate top: 0
