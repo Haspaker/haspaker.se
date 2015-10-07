@@ -1,5 +1,5 @@
 
-$scheme-red: #9e0b0f
+$scheme-red: #C14045 //#AB2A2E //#9e0b0f
 
 @mixin stretch
 	width: 100%
@@ -44,7 +44,7 @@ body
 .background-preloader
 	width: 0
 	height: 0
-	opacity: 0
+	position: absolute
 	background: url(http://cdn.backgroundhost.com/backgrounds/subtlepatterns/broken_noise.png)
 
 
@@ -94,7 +94,7 @@ section.landing
 	.introduction
 
 		text-align: center
-		margin-top: 60px
+		margin-top: 0px
 		font-size: 25px
 		line-height: 1.2
 
@@ -186,59 +186,42 @@ section.skills
 		font-size: 22px
 
 	.skill-graph
-		$bar-color: $scheme-red //darken( #9e0b0f, 15 )
-		margin-top: 15px
-		margin-bottom: 40px
-		position: relative
-		border-left: 4px solid $bar-color
 
-		// Prevent slight vertical padding for inline elements, it messes with the left border. 
-		// Reset on relevant children
-		line-height: 0 
-
-		// We must prevent the bar width from influencing the width of the parent
-		// Otherwise the graph will wobble in place when centered and the bars animate 
-		// This might slightly skew the centering if the bars are long enough
-		// ... but in _this case_ not really enough to be noticable.
-		//width: 0
-		white-space: nowrap
+		border-spacing: 10px
 
 		.skill
-			padding: 0
-			margin-top: 5px
-
-			.label, .bar, .value
-				display: inline-block
-				vertical-align: middle
+			display: table-cell
+			vertical-align: middle
+			margin: 15px
+			height: 70px
+			width: 70px
+			border-radius: 35px
+			border: 8px solid black
+			padding: 5px
+			font-size: 14px
+			font-weight: 600
+			text-align: center
 
 			.label
-				line-height: 1
-				position: absolute
-				right: 100%
-				padding-right: 15px
-				white-space: nowrap
 
-			.bar
-				height: 20px
-				line-height: 20px
-				color: #999
-				font-size: 12px
-				background: $scheme-red
-
-			.value
-				padding-left: 10px
-				color: #999
+			.value, .bar
 				display: none
 
 
 	.experiences, .graphs
 		padding-left: 115px
-		float: left
+		//float: left
+		height: 0
 
 	.graphs
+		display: none
 		border-right: 1px solid black
 		padding-right: 30px
 
+
+	.timeline-with-title
+		padding-bottom: 20px
+	
 	.timeline
 		.event
 			position: relative
@@ -267,43 +250,9 @@ section.skills
 			.location
 				margin-top: 3px
 
-section.contact
-
-	.contact-info
-
-		margin: 0 auto
-		//padding: 20px 0
-		margin-bottom: 20px
-		text-align: center
-
-		.typcn
-			display: none
-			//color: $scheme-red
-			//float: right
-			//opacity: 0.5
-
-		&:nth-child(even)
-			//text-align: right
-
-
-		//border-top: 1px solid black
-		&:first-child
-			border-top: none
-
-		.title, .content
-			//display: inline-block
-
-		.title
-			//color: $scheme-red
-			//font-size: 20px
-			//font-weight: 600
-			margin-bottom: 10px
-
-
-
 
 .contact-box
-	z-index: 1005
+	z-index: 1002
 	position: absolute
 	top: 5px
 	right: 15px
@@ -321,7 +270,7 @@ section.contact
 
 @media (max-width: 650px )
 	.contact-box
-		position: relative !important
+		position: relative
 
 
 

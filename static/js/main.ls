@@ -42,13 +42,26 @@ class LandingPageView extends PageView
 		'click .go-down:not(.go-back)': @scroll_to_portfolio
 		'click .go-back': @hide_portfolio
 
-	initialize: -> super ...
+	initialize: -> 
+		#setInterval @update_cube_contents, 50
+		super ...
 
 	show: ->
 		with window.navigation
 			# Don't animate if website just loaded the front page
 			if ..previous("page_index") is ..hashlinks.about => @$el.show!
 			else super ...
+
+	update_cube_contents: ~>
+		seconds = new Date() .getSeconds() .toString(2)
+		seconds = "0" * (2 - seconds.length) + seconds
+		hours = new Date() .getHours() .toString(2)
+		hours = "0" * (2 - hours.length) + hours
+		minutes = new Date() .getMinutes() .toString(2)
+		minutes = "0" * (2 - minutes.length) + minutes
+		$('.cube .face.left').text seconds
+		$('.cube .face.back').text minutes
+		$('.cube .face.right').text hours
 
 	scroll_to_portfolio: ->
 
@@ -64,14 +77,6 @@ class LandingPageView extends PageView
 		$('.portfolio').hide()
 		$('.greeting').css visibility: \visible 
 		$('.main-content').animate top: 0
-
-class ContactPageView extends PageView
-
-	el: \section.contact
-
-	title: "Hannes Aspåker | Contact"
-
-	show: -> @$el.show()
 
 class SkillsPageView extends PageView
 
@@ -129,12 +134,10 @@ class Navigation extends Backbone.Model
 	pages: 
 		* Page
 		* Page
-		* Page
 
 	hashlinks:
-		landing: 0
+		home: 0
 		skills: 1
-		contact: 2
 
 	initialize: ->
 
@@ -173,7 +176,6 @@ class NavigationView extends Backbone.View
 	pages:
 		* LandingPageView
 		* SkillsPageView
-		* ContactPageView
 
 	initialize: ->
 

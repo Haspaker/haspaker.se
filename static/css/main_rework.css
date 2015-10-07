@@ -37,7 +37,7 @@ body {
 .background-preloader {
   width: 0;
   height: 0;
-  opacity: 0;
+  position: absolute;
   background: url(http://cdn.backgroundhost.com/backgrounds/subtlepatterns/broken_noise.png); }
 
 .navigation {
@@ -57,7 +57,7 @@ body {
     margin-left: 20px;
     margin-top: 10px; }
     .navigation .pages .page-label.selected, .navigation .pages .external-label.selected {
-      color: #9e0b0f; }
+      color: #C14045; }
 
 .main-wrapper {
   width: 100%;
@@ -75,7 +75,7 @@ section {
 
 section.landing .introduction {
   text-align: center;
-  margin-top: 60px;
+  margin-top: 0px;
   font-size: 25px;
   line-height: 1.2; }
 section.landing .go-down {
@@ -94,7 +94,7 @@ section.landing .go-down {
   section.landing .go-down .go-down-title {
     margin-top: 20px;
     text-align: center;
-    color: #9e0b0f;
+    color: #C14045;
     font-size: 22px; }
 section.landing .go-back {
   display: block;
@@ -148,40 +148,30 @@ section.skills {
     font-weight: 600;
     font-size: 22px; }
   section.skills .skill-graph {
-    margin-top: 15px;
-    margin-bottom: 40px;
-    position: relative;
-    border-left: 4px solid #9e0b0f;
-    line-height: 0;
-    white-space: nowrap; }
+    border-spacing: 10px; }
     section.skills .skill-graph .skill {
-      padding: 0;
-      margin-top: 5px; }
-      section.skills .skill-graph .skill .label, section.skills .skill-graph .skill .bar, section.skills .skill-graph .skill .value {
-        display: inline-block;
-        vertical-align: middle; }
-      section.skills .skill-graph .skill .label {
-        line-height: 1;
-        position: absolute;
-        right: 100%;
-        padding-right: 15px;
-        white-space: nowrap; }
-      section.skills .skill-graph .skill .bar {
-        height: 20px;
-        line-height: 20px;
-        color: #999;
-        font-size: 12px;
-        background: #9e0b0f; }
-      section.skills .skill-graph .skill .value {
-        padding-left: 10px;
-        color: #999;
+      display: table-cell;
+      vertical-align: middle;
+      margin: 15px;
+      height: 70px;
+      width: 70px;
+      border-radius: 35px;
+      border: 8px solid black;
+      padding: 5px;
+      font-size: 14px;
+      font-weight: 600;
+      text-align: center; }
+      section.skills .skill-graph .skill .value, section.skills .skill-graph .skill .bar {
         display: none; }
   section.skills .experiences, section.skills .graphs {
     padding-left: 115px;
-    float: left; }
+    height: 0; }
   section.skills .graphs {
+    display: none;
     border-right: 1px solid black;
     padding-right: 30px; }
+  section.skills .timeline-with-title {
+    padding-bottom: 20px; }
   section.skills .timeline .event {
     position: relative;
     height: 53px;
@@ -205,26 +195,15 @@ section.skills {
     section.skills .timeline .event .location {
       margin-top: 3px; }
 
-section.contact .contact-info {
-  margin: 0 auto;
-  margin-bottom: 20px;
-  text-align: center; }
-  section.contact .contact-info .typcn {
-    display: none; }
-  section.contact .contact-info:first-child {
-    border-top: none; }
-  section.contact .contact-info .title {
-    margin-bottom: 10px; }
-
 .contact-box {
-  z-index: 1005;
+  z-index: 1002;
   position: absolute;
   top: 5px;
   right: 15px;
   font-size: 14px;
   text-align: right; }
   .contact-box .title {
-    color: #9e0b0f; }
+    color: #C14045; }
   .contact-box .title, .contact-box .content {
     display: inline; }
   .contact-box .contact-info {
@@ -233,6 +212,6 @@ section.contact .contact-info {
 
 @media (max-width: 650px) {
   .contact-box {
-    position: relative !important; } }
+    position: relative; } }
 
 /*# sourceMappingURL=main_rework.css.map */
