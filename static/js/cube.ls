@@ -105,11 +105,14 @@ class CubeView extends Backbone.View
         setInterval @update_angle, @update_interval
 
     add_listeners: ->
-        @listenTo @model, \change:selected, @select_deselect
-        @listenTo @model, \change:controlled, @control_decontrol
-        $ \#canvas .click ~> @model.set \controlled, no
         $ \body .mousemove @update_mouse
-        $ \.cube .click ~> @model.rotate_right!
+        $ \body .one \mousemove ~>
+            @$ \img .addClass \show
+            setTimeout (~> @$ \img .removeClass \show), 4000
+        $ \.cube .click ~> 
+            @$ \img .removeClass \show
+            @model.rotate_right!
+
 
     update_mouse: (mouse_event) ~>
         mouse = x: mouse_event.pageX, y: mouse_event.pageY
@@ -148,46 +151,6 @@ class CubeView extends Backbone.View
             horizontal_rotation_css + main_vertical_rotation_css + secondary_vertical_rotation_css
         @$(\.cube).css '-webkit-transform': 
             horizontal_rotation_css + main_vertical_rotation_css + secondary_vertical_rotation_css
-
-        if @model.get \controlled => @update_circle!
-
-    update_circle: ~>
-        spin = @model.get \spin
-        mouse = @model.get \mouse
-        [cube_top, cube_left, cube_height, cube_width] = 
-            @el.getBoundingClientRect()['top', 'left', 'height', 'width']
-        offset_left = Math.sin( @model.deg_to_rad spin.horizontal ) * cube_width/2 + cube_width/2
-        offset_top = Math.sin( @model.deg_to_rad spin.vertical ) * -cube_height/2 + cube_height/2
-        left = cube_left + offset_left
-        top = cube_top + offset_top
-        $('#canvas').attr 'height', $(window).height()
-        $('#canvas').attr 'width', $(window).width()
-        canvas = $('#canvas')[0];
-        context = canvas.getContext("2d")
-        context.beginPath()
-        context.moveTo(left,top)
-        context.strokeStyle = '#9900ff'
-        context.lineWidth = 1
-        context.lineTo(mouse.x, mouse.y)
-        context.stroke()
-
-        context.beginPath()
-        context.arc(mouse.x, mouse.y, 5px, 0, 2 * Math.PI, false)
-        context.fillStyle = '#9900ff'
-        context.fill()
-
-    select_deselect: ~>
-        if @model.get \selected => @$(\.cube).addClass \selected
-        else => @$(\.cube).removeClass \selected
-
-    control_decontrol: ~>
-        console.log 'mooo'
-        if @model.get \controlled => 
-            @$(\.cube).addClass \controlled
-            $(\#canvas).css visibility: \visible
-        else => 
-            @$(\.cube).removeClass \controlled
-            $(\#canvas).css visibility: \hidden
 
     rotate_left: ~> @model.rotate_left!
 

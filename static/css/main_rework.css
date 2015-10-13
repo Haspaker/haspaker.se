@@ -131,26 +131,24 @@ section.landing .go-back {
     background-repeat: no-repeat; }
 section.landing .portfolio {
   display: none;
-  background: url(http://cdn.backgroundhost.com/backgrounds/subtlepatterns/broken_noise.png);
   padding: 0 40px 40px;
-  width: 100%; }
+  width: 100%;
+  background: url(http://cdn.backgroundhost.com/backgrounds/subtlepatterns/broken_noise.png); }
   section.landing .portfolio .project {
     display: block;
-    margin: 0 auto;
-    position: relative;
-    width: 90%;
+    margin: 20px auto 0;
     max-width: 500px;
-    margin-top: 20px; }
+    width: 90%; }
     section.landing .portfolio .project img {
       display: block;
       width: 100%; }
     section.landing .portfolio .project .description {
-      padding: 20px 0px;
-      color: #F0F0F0;
+      width: 100%;
       top: 0;
       right: 0;
-      width: 100%;
-      line-height: 1.2; }
+      padding: 20px 0px;
+      line-height: 1.2;
+      color: #F0F0F0; }
       section.landing .portfolio .project .description .title {
         font-size: 22px;
         margin-bottom: 10px;
@@ -162,12 +160,10 @@ section.landing .portfolio {
 
 section.skills {
   padding-top: 20px; }
-  section.skills .tools, section.skills .experiences {
-    display: inline-block; }
-    section.skills .tools .title, section.skills .experiences .title {
-      font-size: 22px;
-      font-weight: 600;
-      margin-bottom: 20px; }
+  section.skills .title {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 20px; }
   section.skills .tools {
     float: left;
     padding-right: 50px;
@@ -213,7 +209,7 @@ section.skills {
 @media (max-width: 650px) {
   section.skills {
     padding-left: 110px; }
-    section.skills .skill-list, section.skills .experiences {
+    section.skills .tools, section.skills .experiences {
       display: block;
       float: none;
       padding-left: 0;

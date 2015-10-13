@@ -84,48 +84,6 @@ class SkillsPageView extends PageView
 
 	title: "Hannes Aspåker | Skills"
 
-	skills:
-		'coffeescript': 1.00
-		'html / css': 1.00
-		'javascript': 0.85
-		'php': 0.70
-		'swift': 0.50
-		'node.js': 1.00
-		'wordpress': 0.90
-		'cocoa': 0.50
-
-	max_bar_width: 250px
-
-	initialize: ->
-		$(window).resize @adjust_graph_bars
-		super ...
-
-	hide_graph_bars: ->
-		@$('.skill-graph .bar').css width: 0
-
-	get_bar_width: (ratio) -> @max_bar_width * ratio * Math.min 1, $(window).width() / 800	
-
-	get_bar_by_label: (label) -> @$( ".skill .label:contains('#label') + .bar")
-
-	show_graph_bars: ~>
-		@hide_graph_bars!
-		for label, ratio of @skills
-			@get_bar_by_label(label).delay(500).animate width: @get_bar_width(ratio), 4000, \easeOutElastic
-
-	adjust_graph_bars: ~>
-		for label, ratio of @skills
-			@get_bar_by_label(label).stop().css width: @get_bar_width(ratio)
-
-	show: -> 
-		window.site.set \drapery, true
-		@show_graph_bars!
-		@$el.fadeIn() # Pass 0s duration to make delayable animation
-
-	hide: -> 
-		window.site.set \drapery, false
-		@$el.hide!
-
-
 class Navigation extends Backbone.Model
 
 	defaults:
@@ -136,8 +94,8 @@ class Navigation extends Backbone.Model
 		* Page
 
 	hashlinks:
-		home: 0
-		skills: 1
+		'': 0
+		'skills': 1
 
 	initialize: ->
 

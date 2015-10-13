@@ -137,9 +137,6 @@ section.landing
 			color: $scheme-red
 			font-size: 22px
 
-		&:hover .go-down-image
-			//background-image: url(/img/red-arrowhead-large.png)
-
 	.go-back
 		display: block
 		margin: 0px auto 50px
@@ -159,53 +156,53 @@ section.landing
 			background-repeat: no-repeat
 
 	.portfolio
+
 		display: none
-		background: url(http://cdn.backgroundhost.com/backgrounds/subtlepatterns/broken_noise.png)
 		padding: 0 40px 40px
 		width: 100%
 
+		background: url(http://cdn.backgroundhost.com/backgrounds/subtlepatterns/broken_noise.png)
+
 		.project
 			display: block
-			margin: 0 auto
-			position: relative
-			width: 90%
+			margin: 20px auto 0
 			max-width: 500px
-			margin-top: 20px
+			width: 90%
+
 			img
 				display: block
 				width: 100%
+
 			.description
-				padding: 20px 0px
-				//position: absolute
-				color: #F0F0F0
+
+				width: 100%
 				top: 0
 				right: 0
-				width: 100%
+
+				padding: 20px 0px
+
 				line-height: 1.2
+				color: #F0F0F0
 
 				.title
 					font-size: 22px
 					margin-bottom: 10px
 					font-weight: 600
-					//color: darken(#0099ff, 0)
 
 				a
-					color: #666 //darken(#0099ff, 25)
+					color: #666
 					&:hover
 						color: #888
 
 section.skills
 
 	padding-top: 20px
-	//padding-left: 110px
 
-	.tools, .experiences
-		display: inline-block
-
-		.title
-			font-size: 22px
-			font-weight: 600
-			margin-bottom: 20px
+	.title
+	
+		font-size: 22px
+		font-weight: 600
+		margin-bottom: 20px
 
 	.tools
 
@@ -227,8 +224,7 @@ section.skills
 	.experiences
 
 		float: right
-		padding-left: 140px
-		
+		padding-left: 140px // make room for timeline years 
 		
 		.timeline-title
 
@@ -272,7 +268,7 @@ section.skills
 	section.skills
 		padding-left: 110px
 
-		.skill-list, .experiences
+		.tools, .experiences
 			display: block
 			float: none
 			padding-left: 0
