@@ -2,7 +2,7 @@
 
 class Cube extends Backbone.Model
 
-    behind_mouse: 500px
+    behind_mouse: 1500px
     selection_distance: 11350px
     update_interval: 5ms
     i: 0
@@ -72,12 +72,12 @@ class Cube extends Backbone.Model
         @set \rotation, rotation + (rotation_position*90 - rotation) / 50
 
     rotate_left: ~>
-        if @get(\rotation) < @get(\rotation_position) * 90 + 20
+        if @get(\rotation) < @get(\rotation_position) * 90 + 10
             @set \rotation_position, 
                 @get(\rotation_position) - 1
 
     rotate_right: ~>
-        if @get(\rotation) > @get(\rotation_position) * 90 - 20
+        if @get(\rotation) > @get(\rotation_position) * 90 - 10
             @set \rotation_position, 
                 @get(\rotation_position) + 1
 
@@ -109,7 +109,7 @@ class CubeView extends Backbone.View
         @listenTo @model, \change:controlled, @control_decontrol
         $ \#canvas .click ~> @model.set \controlled, no
         $ \body .mousemove @update_mouse
-        $ document .mousedown ~> @model.set \selected !@model.get \selected
+        $ \.cube .click ~> @model.rotate_right!
 
     update_mouse: (mouse_event) ~>
         mouse = x: mouse_event.pageX, y: mouse_event.pageY

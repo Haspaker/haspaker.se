@@ -1,3 +1,17 @@
+@mixin transform($argument)
+	-webkit-transform: $argument
+	-moz-transform: $argument
+	-ms-transform: $argument
+	-o-transform: $argument
+	transform: $argument
+
+@mixin prefix($name, $arguments...)
+	-webkit-#{$name}: $arguments
+	-moz-#{$name}: $arguments
+	-ms-#{$name}: $arguments
+	-o-#{$name}: $arguments
+	#{$name}: $arguments
+
 #cube-container
 
 	$size: 100px
@@ -5,47 +19,26 @@
 
 	position: relative
 	display: block
-	margin: 0 auto
-	margin-bottom: 50px
 	width: $size
 	height: $size
-	perspective: 1000px
-	-webkit-perspective: 1000px
-	transform-style: preserve-3d
-	-webkit-transform-style: preserve-3d
-	text-align: center
+	margin: 0 auto
 	cursor: pointer
 
-	.rotate
-		cursor: pointer
-		font-size: 20px
-		display: inline-block
-		position: absolute
-		&.left
-			left: -120px
-			top: 70px
-		&.right
-			right: -120px
-			top: 70px
+	+prefix( perspective, 1000px )
+	+prefix( transform-style, preserve-3d)
 
 	.cube
-		font-size: 12px
+
 		width: 100%
 		height: 100%
-		transition: box-shadow 2s
-		transform-style: preserve-3d
-		-webkit-transform-style: preserve-3d
 
-		&.selected
+		+prefix(transition, box-shadow 2s)
+		+prefix(transform-style, preserve-3d)
+
+		&:hover
 			.face, .small.face, .inside.face
-				border: 1px solid rgba(black, 1)
+				border: 1px solid black
 				background: none
-				//background: rgba(#9e0b0f, 0.3)
-				//box-shadow: 0px 0px 0px 1px rgba(#33aa00, 1)
-
-		&.controlled
-			.face
-				box-shadow: 0px 0px 7px 0px rgba(#9900ff, 1)
 
 		.face
 			position: absolute
@@ -54,98 +47,81 @@
 			left: 0
 			width: $size
 			height: $size
-			//border-width: $border-width
-			line-height: $size
-			text-align: center
-			color: white
-			overflow: hidden
-			//background: rgba(#222, 0.7)
-			&.small
-				//border: 1px solid rgba(white, 0.75)
-			transition: box-shadow 0.4s, border 0.4s, background 0.4s
-			img
-				position: relative
-				//top: -5%
-				//left: -5%
-				width: 100%
-				height: 100%
+
+			+prefix( transition, border 0.4s, background 0.4s )
 
 		.small.face
 			width: $size / 2
 			height: $size / 2
 
+		.front, .back
+			border-color: #900E14
+		.right, .left
+			border-color: #C14045
+		.top, .bottom
+			border-color: #AB2A2E
 
 		.front
-			border-color: #900E14
 			border-right-width: $border-width
 			border-bottom-width: $border-width
-			-webkit-transform: rotateY(  0deg )  translateZ( $size/2 )
-			transform: rotateY(  0deg )  translateZ( $size/2 ) translate3d(0px, 0px, 0px)
+			+transform( rotateY(  0deg )  translateZ( $size/2 ) )
 		.back
-			border-color: #900E14
 			border-left-width: $border-width
 			border-bottom-width: $border-width
-			border-color: #900E14
-			transform: rotateX( 180deg ) translateZ( $size/2 )
-			-webkit-transform: rotateX( 180deg ) translateZ( $size/2 )
+			+transform( rotateX( 180deg ) translateZ( $size/2 ) )
 		.right
 			border-color: #C14045
 			border-left-width: $border-width
 			border-top-width: $border-width
 			transform: rotateY(  90deg ) translateZ( $size/2 )
-			-webkit-transform: rotateY(  90deg ) translateZ( $size/2 ) 
+			+transform( rotateY(  90deg ) translateZ( $size/2 ) ) 
 		.left 
 			border-color: #C14045
 			border-left-width: $border-width
 			border-bottom-width: $border-width
-			transform: rotateY( -90deg ) translateZ( $size/2 )
-			-webkit-transform: rotateY( -90deg ) translateZ( $size/2 )
+			+transform( rotateY( -90deg ) translateZ( $size/2 ) )
 		.top
-			border-color: #AB2A2E
 			border-right-width: $border-width
 			border-top-width: $border-width
-			transform: rotateX(  90deg ) translateZ( $size/2 )
-			-webkit-transform: rotateX(  90deg ) translateZ( $size/2 )
+			+transform( rotateX(  90deg ) translateZ( $size/2 ) )
 		.bottom 
-			border-color: #AB2A2E
 			border-left-width: $border-width
 			border-top-width: $border-width
-			transform: rotateX( -90deg ) translateZ( $size/2 )
-			-webkit-transform: rotateX( -90deg ) translateZ( $size/2 ) 
+			+transform( rotateX( -90deg ) translateZ( $size/2 ) )
 
 		.inside.front
-			transform: rotateY(  0deg )  translateZ( $size/2 ) translateZ( -$border-width )
+			+transform( rotateY(  0deg )  translateZ( $size/2 ) translateZ( -$border-width ) )
 		.inside.back 
-			transform: rotateX( 180deg ) translateZ( $size/2 ) translateZ( -$border-width )
+			+transform( rotateX( 180deg ) translateZ( $size/2 ) translateZ( -$border-width ) )
 		.inside.bottom
-			transform: rotateX( -90deg ) translateZ( $size/2 ) translateZ( -$border-width )
+			+transform( rotateX( -90deg ) translateZ( $size/2 ) translateZ( -$border-width ) )
 		.inside.top 
-			transform: rotateX(  90deg ) translateZ( $size/2 ) translateZ( -$border-width )
+			+transform( rotateX(  90deg ) translateZ( $size/2 ) translateZ( -$border-width ) )
 		.inside.right
-			transform: rotateY(  90deg ) translateZ( $size/2 ) translateZ( -$border-width )
+			+transform( rotateY(  90deg ) translateZ( $size/2 ) translateZ( -$border-width ) )
 		.inside.left
-			transform: rotateY( -90deg ) translateZ( $size/2 ) translateZ( -$border-width )
+			+transform( rotateY( -90deg ) translateZ( $size/2 ) translateZ( -$border-width ) )
 
 		.small.right
 			background: #C14045
-			transform: rotateY(  90deg ) translateY( $size/4 ) translateZ( $size/2 ) //translateZ( $size/4 ) translateX( -$size/4 )
+			+transform( rotateY(  90deg ) translateY( $size/4 ) translateZ( $size/2 ) )
 
 		.small.left
 			background: #C14045
-			transform: rotateY(  90deg ) translateY( $size/4 )
+			+transform( rotateY(  90deg ) translateY( $size/4 ) )
 
 		.small.top
 			background: #AB2A2E
-			transform: rotateX( -90deg ) translateX( $size/4 )
+			+transform( rotateX( -90deg ) translateX( $size/4 ) )
 
 		.small.bottom
 			background: #AB2A2E
-			transform: rotateX( -90deg ) translateX( $size/4 ) translateZ( $size/2 )//translateZ( $size/4 ) translateY( -$size/4 )
+			+transform( rotateX( -90deg ) translateX( $size/4 ) translateZ( $size/2 ) )
 
 		.small.front
 			background: #900E14
-			transform: rotateX( 180deg ) translateX( $size/4 ) translateY( -$size/4 ) translateZ( -$size/4 )
+			+transform( rotateX( 180deg ) translateX( $size/4 ) translateY( -$size/4 ) translateZ( -$size/4 ) )
 
 		.small.back
 			background: #900E14
-			transform: rotateX( 180deg ) translateX( $size/4 ) translateY( -$size/4 ) translateZ( $size/4 )
+			+transform( rotateX( 180deg ) translateX( $size/4 ) translateY( -$size/4 ) translateZ( $size/4 ) )
