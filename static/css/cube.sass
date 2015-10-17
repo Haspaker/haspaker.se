@@ -12,6 +12,10 @@
 	-o-#{$name}: $arguments
 	#{$name}: $arguments
 
+$dark-red: #900E14
+$medium-red: #AB2A2E
+$light-red: #C14045
+
 #cube-container
 
 	$size: 100px
@@ -25,7 +29,7 @@
 	cursor: pointer
 
 	+prefix( perspective, 1000px )
-	+prefix( transform-style, preserve-3d)
+	+prefix( transform-style, preserve-3d )
 
 	img
 		width: 50px
@@ -47,12 +51,6 @@
 		+prefix(transition, box-shadow 2s)
 		+prefix(transform-style, preserve-3d)
 
-		&:hover
-			cursor: pointer
-			.face, .small.face, .inside.face
-				border: 1px solid black
-				background: none
-
 		.face
 			position: absolute
 			border-style: solid
@@ -68,11 +66,11 @@
 			height: $size / 2
 
 		.front, .back
-			border-color: #900E14
+			border-color: $dark-red
 		.right, .left
-			border-color: #C14045
+			border-color: $light-red
 		.top, .bottom
-			border-color: #AB2A2E
+			border-color: $medium-red
 
 		.front
 			border-right-width: $border-width
@@ -83,13 +81,10 @@
 			border-bottom-width: $border-width
 			+transform( rotateX( 180deg ) translateZ( $size/2 ) )
 		.right
-			border-color: #C14045
 			border-left-width: $border-width
 			border-top-width: $border-width
-			transform: rotateY(  90deg ) translateZ( $size/2 )
 			+transform( rotateY(  90deg ) translateZ( $size/2 ) ) 
 		.left 
-			border-color: #C14045
 			border-left-width: $border-width
 			border-bottom-width: $border-width
 			+transform( rotateY( -90deg ) translateZ( $size/2 ) )
@@ -116,25 +111,25 @@
 			+transform( rotateY( -90deg ) translateZ( $size/2 ) translateZ( -$border-width ) )
 
 		.small.right
-			background: #C14045
+			background: $light-red
 			+transform( rotateY(  90deg ) translateY( $size/4 ) translateZ( $size/2 ) )
 
 		.small.left
-			background: #C14045
+			background: $light-red
 			+transform( rotateY(  90deg ) translateY( $size/4 ) )
 
 		.small.top
-			background: #AB2A2E
+			background: $medium-red
 			+transform( rotateX( -90deg ) translateX( $size/4 ) )
 
 		.small.bottom
-			background: #AB2A2E
+			background: $medium-red
 			+transform( rotateX( -90deg ) translateX( $size/4 ) translateZ( $size/2 ) )
 
 		.small.front
-			background: #900E14
+			background: $dark-red
 			+transform( rotateX( 180deg ) translateX( $size/4 ) translateY( -$size/4 ) translateZ( -$size/4 ) )
 
 		.small.back
-			background: #900E14
+			background: $dark-red
 			+transform( rotateX( 180deg ) translateX( $size/4 ) translateY( -$size/4 ) translateZ( $size/4 ) )

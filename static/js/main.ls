@@ -39,31 +39,30 @@ class LandingPageView extends PageView
 	title: "Hannes Aspåker"
 
 	events: ->
-		'click .go-down:not(.go-back)': @scroll_to_portfolio
+		'click .view-portfolio': @scroll_to_portfolio
 		'click .go-back': @hide_portfolio
 
 	initialize: -> 
-		#setInterval @update_cube_contents, 50
+		
+		# Friendly alert to the user if s/he tries to activate the portfolio link in the navbar
+		$('.page-label.selected').click ~>
+			with @$('.view-portfolio .alert')
+				..removeClass \pulse
+				setTimeout (-> ..addClass \pulse), 10
+
 		super ...
 
 	show: ->
+
 		with window.navigation
 			# Don't animate if website just loaded the front page
 			if ..previous("page_index") is ..hashlinks.about => @$el.show!
 			else super ...
-
-	update_cube_contents: ~>
-		seconds = new Date() .getSeconds() .toString(2)
-		seconds = "0" * (2 - seconds.length) + seconds
-		hours = new Date() .getHours() .toString(2)
-		hours = "0" * (2 - hours.length) + hours
-		minutes = new Date() .getMinutes() .toString(2)
-		minutes = "0" * (2 - minutes.length) + minutes
-		$('.cube .face.left').text seconds
-		$('.cube .face.back').text minutes
-		$('.cube .face.right').text hours
+		if window.location.hash is \#portfolio => @scroll_to_portfolio!
 
 	scroll_to_portfolio: ->
+
+		window.location.hash = \#portfolio
 
 		height = $('.main-content').height()
 		$('body').scrollTop 0
@@ -73,6 +72,9 @@ class LandingPageView extends PageView
 		$('.main-content').animate top: -$('.main-content').height()
 
 	hide_portfolio: ->
+
+		window.location.hash = ''
+
 		$('body').scrollTop 0
 		$('.portfolio').hide()
 		$('.greeting').css visibility: \visible 
@@ -95,6 +97,7 @@ class Navigation extends Backbone.Model
 
 	hashlinks:
 		'': 0
+		'portfolio': 0
 		'skills': 1
 
 	initialize: ->
@@ -121,7 +124,7 @@ class Navigation extends Backbone.Model
 
 	update_hash: ~>
 		index = @get \page_index
-		window.location.hash = (keys @hashlinks)[index]
+		window.location.hash = (keys @hashlinks)[ elem-index index, (values @hashlinks) ]
 
 
 class NavigationView extends Backbone.View

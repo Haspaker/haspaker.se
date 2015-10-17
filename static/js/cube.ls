@@ -90,9 +90,9 @@ class CubeView extends Backbone.View
     update_interval: 5ms
 
     events:
-        'click': -> 
-            #@model.set \selected, no
-            #@model.set \controlled, yes
+        'click .cube': -> 
+           @$ \img .removeClass \show
+           @rotate_right!
 
     spin_modes:
         0: axis:\X, dir: 1
@@ -106,13 +106,7 @@ class CubeView extends Backbone.View
 
     add_listeners: ->
         $ \body .mousemove @update_mouse
-        $ \body .one \mousemove ~>
-            @$ \img .addClass \show
-            setTimeout (~> @$ \img .removeClass \show), 4000
-        $ \.cube .click ~> 
-            @$ \img .removeClass \show
-            @model.rotate_right!
-
+        $ \body .one \mousemove ~> @$ \img .addClass \show
 
     update_mouse: (mouse_event) ~>
         mouse = x: mouse_event.pageX, y: mouse_event.pageY
@@ -155,13 +149,6 @@ class CubeView extends Backbone.View
     rotate_left: ~> @model.rotate_left!
 
     rotate_right: ~> @model.rotate_right!
-
-
-
-
-
-
-
 
 $ ->
 

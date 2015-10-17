@@ -42,11 +42,6 @@
     -ms-transform-style: preserve-3d;
     -o-transform-style: preserve-3d;
     transform-style: preserve-3d; }
-    #cube-container .cube:hover {
-      cursor: pointer; }
-      #cube-container .cube:hover .face, #cube-container .cube:hover .small.face, #cube-container .cube:hover .inside.face {
-        border: 1px solid black;
-        background: none; }
     #cube-container .cube .face {
       position: absolute;
       border-style: solid;
@@ -85,17 +80,14 @@
       -o-transform: rotateX(180deg) translateZ(50px);
       transform: rotateX(180deg) translateZ(50px); }
     #cube-container .cube .right {
-      border-color: #C14045;
       border-left-width: 15px;
       border-top-width: 15px;
-      transform: rotateY(90deg) translateZ(50px);
       -webkit-transform: rotateY(90deg) translateZ(50px);
       -moz-transform: rotateY(90deg) translateZ(50px);
       -ms-transform: rotateY(90deg) translateZ(50px);
       -o-transform: rotateY(90deg) translateZ(50px);
       transform: rotateY(90deg) translateZ(50px); }
     #cube-container .cube .left {
-      border-color: #C14045;
       border-left-width: 15px;
       border-bottom-width: 15px;
       -webkit-transform: rotateY(-90deg) translateZ(50px);

@@ -1,14 +1,13 @@
 
-$scheme-red: #CB0000 //#C14045 //#AB2A2E //#9e0b0f
+$scheme-red: #CB0000
 $scheme-red-dark: #9e0b0f
 
-@mixin stretch
-	width: 100%
-	height: 100%
-
-@mixin horizontal-center
-	display: block
-	margin: 0 auto
+@mixin prefix($name, $arguments...)
+	-webkit-#{$name}: $arguments
+	-moz-#{$name}: $arguments
+	-ms-#{$name}: $arguments
+	-o-#{$name}: $arguments
+	#{$name}: $arguments
 
 html
 	box-sizing: border-box
@@ -38,6 +37,7 @@ body
 	float: left
 	position: relative
 	left: 50%
+
 .centered-inner
 	position: relative
 	left: -50%
@@ -54,7 +54,7 @@ body
 
 .main-content
 	position: relative
-	display: block // margin: auto only centers block elements
+	display: block
 	margin: 0 auto
 	height: 100%
 
@@ -64,13 +64,15 @@ body
 	padding-top: 50px
 
 .navigation
+	
+	z-index: 1001
+
 	position: relative
 	width: 100%
-	padding-bottom: 25px
+	padding: 10px 0 25px
+
 	text-align: center
 	font-size: 20px
-	z-index: 1001
-	padding-top: 10px
 
 	a:hover
 		text-decoration: none
@@ -81,19 +83,20 @@ body
 			display: inline-block
 			cursor: pointer
 			padding: 0 10px 0
-			//padding-top: 20px
-			&:hover
-				//color: #0099ff
 			&.selected
 				color: $scheme-red
 
 .contact-box
+
 	z-index: 1002
+
 	position: absolute
 	top: 5px
 	right: 15px
+
 	font-size: 14px
 	text-align: right
+
 	.title, .content
 		display: inline
 	.title
@@ -110,34 +113,66 @@ section.landing
 
 	.introduction
 
-		text-align: center
 		margin-top: 50px
+
+		text-align: center
 		font-size: 22px
 		line-height: 1.2
 
-	.go-down
+	.view-portfolio
+
 		display: block
 		margin: 70px auto 0px
 		cursor: pointer
 
-		.go-down-image 
+		.view-portfolio-image 
+
 			$width: 55px
+
 			display: block
 			margin: auto
+
 			width: $width
 			height: $width
+
+			line-height: $width // center alert
+			text-align: center // center alert
+
 			background-image: url(/img/red-arrowsquare-large-light.png)
 			background-position: center center
 			background-size: 100% auto
 			background-repeat: no-repeat
 
-		.go-down-title 
+			.alert
+
+				display: inline-block // center within parent
+				visibility: hidden
+				opacity: 1
+
+				width: 20px
+				height: 20px
+				border-radius: 10px
+				background: rgba(red, 0.4)
+
+				+prefix( transition, none )
+
+				&.pulse
+					visibility: visible
+					opacity: 0
+					+prefix( transition, transform 1s, opacity 1s )
+					+prefix( transform, scale(8) )
+
+
+		.view-portfolio-title 
+
 			margin-top: 20px
+
 			text-align: center
-			color: $scheme-red
 			font-size: 22px
+			color: $scheme-red
 
 	.go-back
+
 		display: block
 		margin: 0px auto 50px
 		cursor: pointer
@@ -164,6 +199,7 @@ section.landing
 		background: url(http://cdn.backgroundhost.com/backgrounds/subtlepatterns/broken_noise.png)
 
 		.project
+
 			display: block
 			margin: 20px auto 0
 			max-width: 500px
@@ -185,8 +221,9 @@ section.landing
 				color: #F0F0F0
 
 				.title
-					font-size: 22px
+
 					margin-bottom: 10px
+					font-size: 22px
 					font-weight: 600
 
 				a
@@ -206,10 +243,10 @@ section.skills
 
 	.tools
 
-		float: left
-		padding-right: 50px
+		float: right
+		padding-left: 50px
 		margin-bottom: 30px
-		border-right: 1px dotted #666
+		border-left: 1px dotted #666
 
 		img, span
 			vertical-align: middle
@@ -223,8 +260,8 @@ section.skills
 
 	.experiences
 
-		float: right
-		padding-left: 140px // make room for timeline years 
+		float: left
+		padding-right: 50px // make room for timeline years 
 		
 		.timeline-title
 
@@ -248,7 +285,7 @@ section.skills
 				.engagement
 					font-weight: 600
 					.info
-						font-weight: normal
+						font-weight: 500
 
 				.period
 					position: absolute
@@ -260,6 +297,7 @@ section.skills
 					margin-top: 3px
 
 @media (max-width: 800px )
+
 	.contact-box
 		position: relative
 
@@ -269,7 +307,6 @@ section.skills
 		padding-left: 110px
 
 		.tools, .experiences
-			display: block
 			float: none
 			padding-left: 0
 			border: none
