@@ -38,7 +38,7 @@ body {
   width: 0;
   height: 0;
   position: absolute;
-  background: url(http://cdn.backgroundhost.com/backgrounds/subtlepatterns/broken_noise.png); }
+  background: url(/img/broken_noise.png); }
 
 .main-wrapper {
   width: 100%;
@@ -160,7 +160,7 @@ section.landing .portfolio {
   display: none;
   padding: 0 40px 40px;
   width: 100%;
-  background: url(http://cdn.backgroundhost.com/backgrounds/subtlepatterns/broken_noise.png); }
+  background: url(/img/broken_noise.png); }
   section.landing .portfolio .project {
     display: block;
     margin: 20px auto 0;
