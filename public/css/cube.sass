@@ -1,0 +1,147 @@
+@mixin transform($argument)
+	-webkit-transform: $argument
+	-moz-transform: $argument
+	-ms-transform: $argument
+	-o-transform: $argument
+	transform: $argument
+
+@mixin prefix($name, $arguments...)
+	-webkit-#{$name}: $arguments
+	-moz-#{$name}: $arguments
+	-ms-#{$name}: $arguments
+	-o-#{$name}: $arguments
+	#{$name}: $arguments
+
+$dark-red: #900E14
+$medium-red: #AB2A2E
+$light-red: #C14045
+
+#cube-container
+
+	$size: 100px
+	$border-width: 15px
+
+	position: relative
+	display: block
+	width: $size
+	height: $size
+	margin: 0 auto
+	cursor: pointer
+
+	+prefix( perspective, 1000px )
+	+prefix( transform-style, preserve-3d )
+
+	.fallback-logo
+		width: 170px
+		position: relative
+		left: -30px
+		top: -30px
+
+	.click-me
+		width: 50px
+		position: absolute
+		bottom: -15px
+		right: -90px
+		opacity: 0
+		+prefix(transition, opacity 0.5s)
+	.click-me.show
+		opacity: 1
+
+	.cube
+
+		width: 100%
+		height: 100%
+
+		cursor: pointer
+
+		+prefix(transition, box-shadow 2s)
+		+prefix(transform-style, preserve-3d)
+
+		.face
+			position: absolute
+			border-style: solid
+			top: 0
+			left: 0
+			width: $size
+			height: $size
+
+			+prefix( transition, border 0.4s, background 0.4s )
+
+		.small.face
+			width: $size / 2
+			height: $size / 2
+
+		.front, .back
+			border-color: $dark-red
+		.right, .left
+			border-color: $light-red
+		.top, .bottom
+			border-color: $medium-red
+
+		.front
+			border-right-width: $border-width
+			border-bottom-width: $border-width
+			+transform( rotateY(  0deg )  translateZ( $size/2 ) )
+		.back
+			border-left-width: $border-width
+			border-bottom-width: $border-width
+			+transform( rotateX( 180deg ) translateZ( $size/2 ) )
+		.right
+			border-left-width: $border-width
+			border-top-width: $border-width
+			+transform( rotateY(  90deg ) translateZ( $size/2 ) ) 
+		.left 
+			border-left-width: $border-width
+			border-bottom-width: $border-width
+			+transform( rotateY( -90deg ) translateZ( $size/2 ) )
+		.top
+			border-right-width: $border-width
+			border-top-width: $border-width
+			+transform( rotateX(  90deg ) translateZ( $size/2 ) )
+		.bottom 
+			border-left-width: $border-width
+			border-top-width: $border-width
+			+transform( rotateX( -90deg ) translateZ( $size/2 ) )
+
+		.inside.front
+			+transform( rotateY(  0deg )  translateZ( $size/2 ) translateZ( -$border-width ) )
+		.inside.back 
+			+transform( rotateX( 180deg ) translateZ( $size/2 ) translateZ( -$border-width ) )
+		.inside.bottom
+			+transform( rotateX( -90deg ) translateZ( $size/2 ) translateZ( -$border-width ) )
+		.inside.top 
+			+transform( rotateX(  90deg ) translateZ( $size/2 ) translateZ( -$border-width ) )
+		.inside.right
+			+transform( rotateY(  90deg ) translateZ( $size/2 ) translateZ( -$border-width ) )
+		.inside.left
+			+transform( rotateY( -90deg ) translateZ( $size/2 ) translateZ( -$border-width ) )
+
+		.small.right
+			background: $light-red
+			+transform( rotateY(  90deg ) translateY( $size/4 ) translateZ( $size/2 ) )
+
+		.small.left
+			background: $light-red
+			+transform( rotateY(  90deg ) translateY( $size/4 ) )
+
+		.small.top
+			background: $medium-red
+			+transform( rotateX( -90deg ) translateX( $size/4 ) )
+
+		.small.bottom
+			background: $medium-red
+			+transform( rotateX( -90deg ) translateX( $size/4 ) translateZ( $size/2 ) )
+
+		.small.front
+			background: $dark-red
+			+transform( rotateX( 180deg ) translateX( $size/4 ) translateY( -$size/4 ) translateZ( -$size/4 ) )
+
+		.small.back
+			background: $dark-red
+			+transform( rotateX( 180deg ) translateX( $size/4 ) translateY( -$size/4 ) translateZ( $size/4 ) )
+
+	&.firefox .cube
+		.face:not(.small):not(.inside)
+			border-width: $border-width/2
+		.face.inside
+			border-width: 0

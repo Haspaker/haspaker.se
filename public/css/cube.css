@@ -1,0 +1,202 @@
+#cube-container {
+  position: relative;
+  display: block;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+  cursor: pointer;
+  -webkit-perspective: 1000px;
+  -moz-perspective: 1000px;
+  -ms-perspective: 1000px;
+  -o-perspective: 1000px;
+  perspective: 1000px;
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  -o-transform-style: preserve-3d;
+  transform-style: preserve-3d; }
+  #cube-container .fallback-logo {
+    width: 170px;
+    position: relative;
+    left: -30px;
+    top: -30px; }
+  #cube-container .click-me {
+    width: 50px;
+    position: absolute;
+    bottom: -15px;
+    right: -90px;
+    opacity: 0;
+    -webkit-transition: opacity 0.5s;
+    -moz-transition: opacity 0.5s;
+    -ms-transition: opacity 0.5s;
+    -o-transition: opacity 0.5s;
+    transition: opacity 0.5s; }
+  #cube-container .click-me.show {
+    opacity: 1; }
+  #cube-container .cube {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    -webkit-transition: box-shadow 2s;
+    -moz-transition: box-shadow 2s;
+    -ms-transition: box-shadow 2s;
+    -o-transition: box-shadow 2s;
+    transition: box-shadow 2s;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -ms-transform-style: preserve-3d;
+    -o-transform-style: preserve-3d;
+    transform-style: preserve-3d; }
+    #cube-container .cube .face {
+      position: absolute;
+      border-style: solid;
+      top: 0;
+      left: 0;
+      width: 100px;
+      height: 100px;
+      -webkit-transition: border 0.4s, background 0.4s;
+      -moz-transition: border 0.4s, background 0.4s;
+      -ms-transition: border 0.4s, background 0.4s;
+      -o-transition: border 0.4s, background 0.4s;
+      transition: border 0.4s, background 0.4s; }
+    #cube-container .cube .small.face {
+      width: 50px;
+      height: 50px; }
+    #cube-container .cube .front, #cube-container .cube .back {
+      border-color: #900E14; }
+    #cube-container .cube .right, #cube-container .cube .left {
+      border-color: #C14045; }
+    #cube-container .cube .top, #cube-container .cube .bottom {
+      border-color: #AB2A2E; }
+    #cube-container .cube .front {
+      border-right-width: 15px;
+      border-bottom-width: 15px;
+      -webkit-transform: rotateY(0deg) translateZ(50px);
+      -moz-transform: rotateY(0deg) translateZ(50px);
+      -ms-transform: rotateY(0deg) translateZ(50px);
+      -o-transform: rotateY(0deg) translateZ(50px);
+      transform: rotateY(0deg) translateZ(50px); }
+    #cube-container .cube .back {
+      border-left-width: 15px;
+      border-bottom-width: 15px;
+      -webkit-transform: rotateX(180deg) translateZ(50px);
+      -moz-transform: rotateX(180deg) translateZ(50px);
+      -ms-transform: rotateX(180deg) translateZ(50px);
+      -o-transform: rotateX(180deg) translateZ(50px);
+      transform: rotateX(180deg) translateZ(50px); }
+    #cube-container .cube .right {
+      border-left-width: 15px;
+      border-top-width: 15px;
+      -webkit-transform: rotateY(90deg) translateZ(50px);
+      -moz-transform: rotateY(90deg) translateZ(50px);
+      -ms-transform: rotateY(90deg) translateZ(50px);
+      -o-transform: rotateY(90deg) translateZ(50px);
+      transform: rotateY(90deg) translateZ(50px); }
+    #cube-container .cube .left {
+      border-left-width: 15px;
+      border-bottom-width: 15px;
+      -webkit-transform: rotateY(-90deg) translateZ(50px);
+      -moz-transform: rotateY(-90deg) translateZ(50px);
+      -ms-transform: rotateY(-90deg) translateZ(50px);
+      -o-transform: rotateY(-90deg) translateZ(50px);
+      transform: rotateY(-90deg) translateZ(50px); }
+    #cube-container .cube .top {
+      border-right-width: 15px;
+      border-top-width: 15px;
+      -webkit-transform: rotateX(90deg) translateZ(50px);
+      -moz-transform: rotateX(90deg) translateZ(50px);
+      -ms-transform: rotateX(90deg) translateZ(50px);
+      -o-transform: rotateX(90deg) translateZ(50px);
+      transform: rotateX(90deg) translateZ(50px); }
+    #cube-container .cube .bottom {
+      border-left-width: 15px;
+      border-top-width: 15px;
+      -webkit-transform: rotateX(-90deg) translateZ(50px);
+      -moz-transform: rotateX(-90deg) translateZ(50px);
+      -ms-transform: rotateX(-90deg) translateZ(50px);
+      -o-transform: rotateX(-90deg) translateZ(50px);
+      transform: rotateX(-90deg) translateZ(50px); }
+    #cube-container .cube .inside.front {
+      -webkit-transform: rotateY(0deg) translateZ(50px) translateZ(-15px);
+      -moz-transform: rotateY(0deg) translateZ(50px) translateZ(-15px);
+      -ms-transform: rotateY(0deg) translateZ(50px) translateZ(-15px);
+      -o-transform: rotateY(0deg) translateZ(50px) translateZ(-15px);
+      transform: rotateY(0deg) translateZ(50px) translateZ(-15px); }
+    #cube-container .cube .inside.back {
+      -webkit-transform: rotateX(180deg) translateZ(50px) translateZ(-15px);
+      -moz-transform: rotateX(180deg) translateZ(50px) translateZ(-15px);
+      -ms-transform: rotateX(180deg) translateZ(50px) translateZ(-15px);
+      -o-transform: rotateX(180deg) translateZ(50px) translateZ(-15px);
+      transform: rotateX(180deg) translateZ(50px) translateZ(-15px); }
+    #cube-container .cube .inside.bottom {
+      -webkit-transform: rotateX(-90deg) translateZ(50px) translateZ(-15px);
+      -moz-transform: rotateX(-90deg) translateZ(50px) translateZ(-15px);
+      -ms-transform: rotateX(-90deg) translateZ(50px) translateZ(-15px);
+      -o-transform: rotateX(-90deg) translateZ(50px) translateZ(-15px);
+      transform: rotateX(-90deg) translateZ(50px) translateZ(-15px); }
+    #cube-container .cube .inside.top {
+      -webkit-transform: rotateX(90deg) translateZ(50px) translateZ(-15px);
+      -moz-transform: rotateX(90deg) translateZ(50px) translateZ(-15px);
+      -ms-transform: rotateX(90deg) translateZ(50px) translateZ(-15px);
+      -o-transform: rotateX(90deg) translateZ(50px) translateZ(-15px);
+      transform: rotateX(90deg) translateZ(50px) translateZ(-15px); }
+    #cube-container .cube .inside.right {
+      -webkit-transform: rotateY(90deg) translateZ(50px) translateZ(-15px);
+      -moz-transform: rotateY(90deg) translateZ(50px) translateZ(-15px);
+      -ms-transform: rotateY(90deg) translateZ(50px) translateZ(-15px);
+      -o-transform: rotateY(90deg) translateZ(50px) translateZ(-15px);
+      transform: rotateY(90deg) translateZ(50px) translateZ(-15px); }
+    #cube-container .cube .inside.left {
+      -webkit-transform: rotateY(-90deg) translateZ(50px) translateZ(-15px);
+      -moz-transform: rotateY(-90deg) translateZ(50px) translateZ(-15px);
+      -ms-transform: rotateY(-90deg) translateZ(50px) translateZ(-15px);
+      -o-transform: rotateY(-90deg) translateZ(50px) translateZ(-15px);
+      transform: rotateY(-90deg) translateZ(50px) translateZ(-15px); }
+    #cube-container .cube .small.right {
+      background: #C14045;
+      -webkit-transform: rotateY(90deg) translateY(25px) translateZ(50px);
+      -moz-transform: rotateY(90deg) translateY(25px) translateZ(50px);
+      -ms-transform: rotateY(90deg) translateY(25px) translateZ(50px);
+      -o-transform: rotateY(90deg) translateY(25px) translateZ(50px);
+      transform: rotateY(90deg) translateY(25px) translateZ(50px); }
+    #cube-container .cube .small.left {
+      background: #C14045;
+      -webkit-transform: rotateY(90deg) translateY(25px);
+      -moz-transform: rotateY(90deg) translateY(25px);
+      -ms-transform: rotateY(90deg) translateY(25px);
+      -o-transform: rotateY(90deg) translateY(25px);
+      transform: rotateY(90deg) translateY(25px); }
+    #cube-container .cube .small.top {
+      background: #AB2A2E;
+      -webkit-transform: rotateX(-90deg) translateX(25px);
+      -moz-transform: rotateX(-90deg) translateX(25px);
+      -ms-transform: rotateX(-90deg) translateX(25px);
+      -o-transform: rotateX(-90deg) translateX(25px);
+      transform: rotateX(-90deg) translateX(25px); }
+    #cube-container .cube .small.bottom {
+      background: #AB2A2E;
+      -webkit-transform: rotateX(-90deg) translateX(25px) translateZ(50px);
+      -moz-transform: rotateX(-90deg) translateX(25px) translateZ(50px);
+      -ms-transform: rotateX(-90deg) translateX(25px) translateZ(50px);
+      -o-transform: rotateX(-90deg) translateX(25px) translateZ(50px);
+      transform: rotateX(-90deg) translateX(25px) translateZ(50px); }
+    #cube-container .cube .small.front {
+      background: #900E14;
+      -webkit-transform: rotateX(180deg) translateX(25px) translateY(-25px) translateZ(-25px);
+      -moz-transform: rotateX(180deg) translateX(25px) translateY(-25px) translateZ(-25px);
+      -ms-transform: rotateX(180deg) translateX(25px) translateY(-25px) translateZ(-25px);
+      -o-transform: rotateX(180deg) translateX(25px) translateY(-25px) translateZ(-25px);
+      transform: rotateX(180deg) translateX(25px) translateY(-25px) translateZ(-25px); }
+    #cube-container .cube .small.back {
+      background: #900E14;
+      -webkit-transform: rotateX(180deg) translateX(25px) translateY(-25px) translateZ(25px);
+      -moz-transform: rotateX(180deg) translateX(25px) translateY(-25px) translateZ(25px);
+      -ms-transform: rotateX(180deg) translateX(25px) translateY(-25px) translateZ(25px);
+      -o-transform: rotateX(180deg) translateX(25px) translateY(-25px) translateZ(25px);
+      transform: rotateX(180deg) translateX(25px) translateY(-25px) translateZ(25px); }
+  #cube-container.firefox .cube .face:not(.small):not(.inside) {
+    border-width: 7.5px; }
+  #cube-container.firefox .cube .face.inside {
+    border-width: 0; }
+
+/*# sourceMappingURL=cube.css.map */

@@ -1,0 +1,255 @@
+html {
+  box-sizing: border-box;
+  height: 100%; }
+  html *, html *:before, html *:after {
+    box-sizing: inherit; }
+
+b {
+  font-weight: 600; }
+
+em {
+  font-style: italic; }
+
+u {
+  text-decoration: underline; }
+
+a {
+  text-decoration: none;
+  color: inherit; }
+  a:hover {
+    text-decoration: underline; }
+
+body {
+  background: url(/img/stripe.png);
+  height: 100%;
+  font-family: "fira-sans-2";
+  font-weight: 500; }
+
+.centered-outer {
+  float: left;
+  position: relative;
+  left: 50%; }
+
+.centered-inner {
+  position: relative;
+  left: -50%; }
+
+.background-preloader {
+  width: 0;
+  height: 0;
+  position: absolute;
+  background-image: url(/img/broken_noise.png), url(/img/go-back-image.png); }
+
+.main-wrapper {
+  width: 100%;
+  padding: 0; }
+
+.main-content {
+  position: relative;
+  display: block;
+  margin: 0 auto;
+  height: 100%; }
+
+.name {
+  text-align: center;
+  font-size: 40px;
+  padding-top: 50px; }
+
+.navigation {
+  z-index: 1001;
+  position: relative;
+  width: 100%;
+  padding: 10px 0 25px;
+  text-align: center;
+  font-size: 20px; }
+  .navigation a:hover {
+    text-decoration: none; }
+  .navigation .pages .page-label, .navigation .pages .external-label {
+    display: inline-block;
+    cursor: pointer;
+    padding: 0 10px 0; }
+    .navigation .pages .page-label.selected, .navigation .pages .external-label.selected {
+      color: #CB0000; }
+
+.contact-box {
+  z-index: 1002;
+  position: absolute;
+  top: 5px;
+  right: 15px;
+  font-size: 14px;
+  text-align: right; }
+  .contact-box .title, .contact-box .content {
+    display: inline; }
+  .contact-box .title {
+    color: #9e0b0f; }
+  .contact-box .contact-info {
+    margin-left: 20px;
+    margin-top: 5px; }
+
+section {
+  padding-top: 50px;
+  display: none; }
+
+section.landing .introduction {
+  margin-top: 50px;
+  text-align: center;
+  font-size: 22px;
+  line-height: 1.2; }
+section.landing .view-portfolio {
+  display: block;
+  margin: 70px auto 0px;
+  cursor: pointer; }
+  section.landing .view-portfolio .view-portfolio-image {
+    display: block;
+    position: relative;
+    margin: auto;
+    width: 55px;
+    height: 55px;
+    line-height: 55px;
+    text-align: center; }
+    section.landing .view-portfolio .view-portfolio-image img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0; }
+    section.landing .view-portfolio .view-portfolio-image .alert {
+      display: inline-block;
+      visibility: hidden;
+      opacity: 1;
+      width: 20px;
+      height: 20px;
+      border-radius: 10px;
+      background: rgba(255, 0, 0, 0.4);
+      -webkit-transition: none;
+      -moz-transition: none;
+      -ms-transition: none;
+      -o-transition: none;
+      transition: none; }
+      section.landing .view-portfolio .view-portfolio-image .alert.pulse {
+        visibility: visible;
+        opacity: 0;
+        -webkit-transition: transform 1s, opacity 1s;
+        -moz-transition: transform 1s, opacity 1s;
+        -ms-transition: transform 1s, opacity 1s;
+        -o-transition: transform 1s, opacity 1s;
+        transition: transform 1s, opacity 1s;
+        -webkit-transform: scale(8);
+        -moz-transform: scale(8);
+        -ms-transform: scale(8);
+        -o-transform: scale(8);
+        transform: scale(8); }
+  section.landing .view-portfolio .view-portfolio-title {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 22px;
+    color: #CB0000; }
+section.landing .go-back {
+  display: block;
+  margin: 0px auto 50px;
+  cursor: pointer; }
+  section.landing .go-back .go-back-image {
+    display: block;
+    position: relative;
+    margin: auto;
+    width: 55px;
+    height: 55px; }
+    section.landing .go-back .go-back-image img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0; }
+section.landing .portfolio {
+  display: none;
+  padding: 0 40px 40px;
+  width: 100%;
+  background: url(/img/broken_noise.png); }
+  section.landing .portfolio .project {
+    display: block;
+    margin: 20px auto 0;
+    max-width: 500px;
+    width: 90%; }
+    section.landing .portfolio .project img {
+      display: block;
+      width: 100%; }
+    section.landing .portfolio .project .description {
+      width: 100%;
+      top: 0;
+      right: 0;
+      padding: 20px 0px;
+      line-height: 1.2;
+      color: #F0F0F0; }
+      section.landing .portfolio .project .description .title {
+        margin-bottom: 10px;
+        font-size: 22px;
+        font-weight: 600; }
+      section.landing .portfolio .project .description a {
+        color: #666; }
+        section.landing .portfolio .project .description a:hover {
+          color: #888; }
+
+section.skills {
+  padding-top: 20px; }
+  section.skills .title {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 20px; }
+  section.skills .tools {
+    float: right;
+    padding-left: 50px;
+    margin-bottom: 30px;
+    border-left: 1px dotted #666; }
+    section.skills .tools img, section.skills .tools span {
+      vertical-align: middle;
+      display: inline-block; }
+    section.skills .tools img {
+      height: 16px; }
+    section.skills .tools .tool {
+      line-height: 1.5; }
+  section.skills .experiences {
+    float: left;
+    padding-right: 50px; }
+    section.skills .experiences .timeline-title {
+      width: 50%;
+      padding-bottom: 5px;
+      margin-bottom: 10px;
+      border-bottom: 1px dotted #666;
+      font-size: 14px;
+      color: #666; }
+    section.skills .experiences .timeline {
+      margin-bottom: 20px; }
+      section.skills .experiences .timeline .event {
+        margin-bottom: 15px;
+        position: relative; }
+        section.skills .experiences .timeline .event .engagement {
+          font-weight: 600; }
+          section.skills .experiences .timeline .event .engagement .info {
+            font-weight: 500; }
+        section.skills .experiences .timeline .event .period {
+          position: absolute;
+          right: 100%;
+          white-space: nowrap;
+          padding-right: 15px; }
+        section.skills .experiences .timeline .event .location {
+          margin-top: 3px; }
+
+@media (max-width: 800px) {
+  .contact-box {
+    position: relative; } }
+@media (max-width: 675px) {
+  section.skills {
+    padding-left: 110px; }
+    section.skills .tools, section.skills .experiences {
+      float: none;
+      padding-left: 0;
+      border: none; } }
+@media (max-width: 500px) {
+  .centered-outer {
+    float: none;
+    left: 0; }
+
+  .centered-inner {
+    left: 0; } }
+
+/*# sourceMappingURL=main.css.map */
