@@ -90,7 +90,8 @@ class CubeView extends Backbone.View
 
     modernizr_fallback: ->
         is_device = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test navigator.userAgent
-        if is_device or not Modernizr.preserve3d
+        is_ie = /MSIE/.test navigator.userAgent
+        if is_device or is_ie or not Modernizr.preserve3d
             @$el.html '<img class="fallback-logo" src="/img/cube-logo.png"/>'
         is_firefox = /Firefox/.test navigator.userAgent
         if is_firefox

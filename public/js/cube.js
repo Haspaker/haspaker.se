@@ -123,9 +123,10 @@
       return setInterval(this.update_angle, this.update_interval);
     };
     prototype.modernizr_fallback = function(){
-      var is_device, is_firefox;
+      var is_device, is_ie, is_firefox;
       is_device = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-      if (is_device || !Modernizr.preserve3d) {
+      is_ie = /MSIE/.test(navigator.userAgent);
+      if (is_device || is_ie || !Modernizr.preserve3d) {
         this.$el.html('<img class="fallback-logo" src="/img/cube-logo.png"/>');
       }
       is_firefox = /Firefox/.test(navigator.userAgent);
