@@ -98,6 +98,7 @@ section.landing .introduction {
 section.landing .view-portfolio {
   display: block;
   margin: 70px auto 0px;
+  padding-bottom: 75px;
   cursor: pointer; }
   section.landing .view-portfolio .view-portfolio-image {
     display: block;
@@ -161,7 +162,6 @@ section.landing .go-back {
       top: 0;
       left: 0; }
 section.landing .portfolio {
-  display: none;
   padding: 0 40px 40px;
   width: 100%;
   background: url(/img/broken_noise.png); }

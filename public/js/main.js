@@ -65,6 +65,7 @@
     };
     prototype.initialize = function(){
       var this$ = this;
+      superclass.prototype.initialize.apply(this, arguments);
       $('.page-label.selected').click(function(){
         var x$;
         x$ = this$.$('.view-portfolio .alert');
@@ -74,7 +75,22 @@
         }, 5);
         return x$;
       });
-      return superclass.prototype.initialize.apply(this, arguments);
+      this.resize_greeting();
+      return $(window).resize(this.resize_greeting);
+    };
+    prototype.resize_greeting = function(){
+      var $greeting, height;
+      $greeting = this.$('.greeting');
+      $greeting.css({
+        height: 'auto'
+      });
+      height = Math.max($greeting.height(), $(window).height() - $greeting.offset().top);
+      $greeting.css({
+        height: height
+      });
+      if (window.location.hash === '#portfolio') {
+        return $(window).scrollTo(this.$('.portfolio'));
+      }
     };
     prototype.show = function(){
       var x$;
@@ -88,40 +104,18 @@
         return this.scroll_to_portfolio();
       }
     };
-    prototype.hide = function(){
-      this.hide_portfolio();
-      return superclass.prototype.hide.apply(this, arguments);
-    };
     prototype.scroll_to_portfolio = function(){
-      var height;
-      window.location.hash = '#portfolio';
-      height = $('.main-content').height();
-      $('body').scrollTop(0);
-      $('.portfolio').show();
-      $('.portfolio').css({
-        position: 'absolute',
-        top: height,
-        left: 0
-      });
-      $('.greeting').css({
-        visibility: 'hidden'
-      });
-      return $('.main-content').animate({
-        top: -$('.main-content').height()
+      return $(window).scrollTo(this.$('.portfolio'), 500, function(){
+        return window.location.hash = '#portfolio';
       });
     };
     prototype.hide_portfolio = function(){
-      window.location.hash = '';
-      $('body').scrollTop(0);
-      $('.portfolio').hide();
-      $('.greeting').css({
-        visibility: 'visible'
-      });
-      return $('.main-content').animate({
-        top: 0
+      return $(window).scrollTo(0, 500, function(){
+        return window.location.hash = '#';
       });
     };
     function LandingPageView(){
+      this.resize_greeting = bind$(this, 'resize_greeting', prototype);
       LandingPageView.superclass.apply(this, arguments);
     }
     return LandingPageView;

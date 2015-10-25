@@ -43,14 +43,25 @@ class LandingPageView extends PageView
 		'click .go-back': @hide_portfolio
 
 	initialize: -> 
-		
+
+		super ...
+
 		# Friendly alert to the user if s/he tries to activate the portfolio link in the navbar
 		$('.page-label.selected').click ~>
 			with @$('.view-portfolio .alert')
 				..removeClass \pulse
 				setTimeout (-> ..addClass \pulse), 5
 
-		super ...
+		@resize_greeting!
+		$(window).resize @resize_greeting
+
+	resize_greeting: ~>
+		$greeting = @$ \.greeting
+		$greeting.css height: \auto
+		height = Math.max  $greeting.height(), $(window).height() - $greeting.offset().top
+		$greeting.css height: height
+		if window.location.hash == \#portfolio
+			$(window).scrollTo  @$(\.portfolio)
 
 	show: ->
 
@@ -60,29 +71,13 @@ class LandingPageView extends PageView
 			else super ...
 		if window.location.hash is \#portfolio => @scroll_to_portfolio!
 
-	hide: ->
-		@hide_portfolio!
-		super ...
-
 	scroll_to_portfolio: ->
-
-		window.location.hash = \#portfolio
-
-		height = $('.main-content').height()
-		$('body').scrollTop 0
-		$('.portfolio').show()
-		$('.portfolio').css position: \absolute, top: height, left: 0
-		$('.greeting').css visibility: \hidden 
-		$('.main-content').animate top: -$('.main-content').height()
+		$(window).scrollTo  @$(\.portfolio), 500, -> 
+			window.location.hash = \#portfolio
 
 	hide_portfolio: ->
-
-		window.location.hash = ''
-
-		$('body').scrollTop 0
-		$('.portfolio').hide()
-		$('.greeting').css visibility: \visible 
-		$('.main-content').animate top: 0
+		$(window).scrollTo 0, 500, -> 
+			window.location.hash = \#
 
 class SkillsPageView extends PageView
 
