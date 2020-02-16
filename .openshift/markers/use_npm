@@ -1,3 +1,0 @@
-#!/bin/bash
-# marker file for OpenShift web hosting (https://gist.github.com/yang-wei/3dadb855e84bebd2ab8a)
-# include this file to make sure it starts by npm start
