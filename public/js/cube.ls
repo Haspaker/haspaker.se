@@ -94,8 +94,8 @@ class CubeView extends Backbone.View
         if is_device or is_ie or not Modernizr.preserve3d
             @$el.html '<img class="fallback-logo" src="/img/cube-logo.png"/>'
         is_firefox = /Firefox/.test navigator.userAgent
-        if is_firefox
-            @$el.addClass \firefox
+        #if is_firefox
+        #    @$el.addClass \firefox
 
     add_listeners: ->
         $ \body .mousemove @update_mouse

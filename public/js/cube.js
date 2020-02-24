@@ -129,10 +129,7 @@
       if (is_device || is_ie || !Modernizr.preserve3d) {
         this.$el.html('<img class="fallback-logo" src="/img/cube-logo.png"/>');
       }
-      is_firefox = /Firefox/.test(navigator.userAgent);
-      if (is_firefox) {
-        return this.$el.addClass('firefox');
-      }
+      return is_firefox = /Firefox/.test(navigator.userAgent);
     };
     prototype.add_listeners = function(){
       var this$ = this;
