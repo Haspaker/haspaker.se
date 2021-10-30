@@ -46,6 +46,8 @@ class LandingPageView extends PageView
 
 		super ...
 
+		setTimeout((-> $('.landing').removeClass('init-hidden')), 400)
+
 		# Friendly alert to the user if s/he tries to activate the portfolio link in the navbar
 		$('.page-label.selected').click ~>
 			with @$('.view-portfolio .alert')
@@ -69,7 +71,7 @@ class LandingPageView extends PageView
 			# Don't animate if website just loaded the front page
 			if ..previous("page_index") is 0 => @$el.show!
 			else super ...
-		if window.location.hash is \#portfolio => @scroll_to_portfolio!
+		#if window.location.hash is \#portfolio => @scroll_to_portfolio!
 
 	scroll_to_portfolio: ->
 		$(window).scrollTo  @$(\.portfolio), 500, -> 

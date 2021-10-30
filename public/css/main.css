@@ -114,6 +114,12 @@ section {
   display: none;
 }
 
+section.landing.init-hidden .greeting {
+  animation: none;
+}
+section.landing.init-hidden .bg-wave, section.landing.init-hidden .portfolio {
+  display: none;
+}
 section.landing .greeting {
   height: 290px;
   position: relative;
@@ -158,7 +164,7 @@ section.landing .bg-wave .wave-left, section.landing .bg-wave .wave-right, secti
 }
 section.landing .bg-wave .wave-left, section.landing .bg-wave .wave-right {
   width: calc(50vw - 381.5px);
-  background: url(/img/broken_noise.png);
+  background: black url(/img/broken_noise.png);
 }
 section.landing .bg-wave .wave-left {
   left: 0;

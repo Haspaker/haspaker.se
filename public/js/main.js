@@ -66,6 +66,9 @@
     LandingPageView.prototype.initialize = function(){
       var this$ = this;
       superclass.prototype.initialize.apply(this, arguments);
+      setTimeout(function(){
+        return $('.landing').removeClass('init-hidden');
+      }, 400);
       return $('.page-label.selected').click(function(){
         var x$;
         x$ = this$.$('.view-portfolio .alert');
@@ -98,9 +101,7 @@
       } else {
         superclass.prototype.show.apply(this, arguments);
       }
-      if (window.location.hash === '#portfolio') {
-        return this.scroll_to_portfolio();
-      }
+      return x$;
     };
     LandingPageView.prototype.scroll_to_portfolio = function(){
       return $(window).scrollTo(this.$('.portfolio'), 500, function(){
