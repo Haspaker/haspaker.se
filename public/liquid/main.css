@@ -101,11 +101,11 @@ body {
     height: 30px;
     width: 40px;
     background-size: 40px;
-    background-image: url(/svg/shift-button.svg);
+    background-image: url(svg/shift-button.svg);
 }
 .icon.mouse-left {
-    background-image: url(/svg/mouse-left.svg);
+    background-image: url(svg/mouse-left.svg);
 }
 .icon.mouse-right {
-    background-image: url(/svg/mouse-right.svg);
+    background-image: url(svg/mouse-right.svg);
 }
