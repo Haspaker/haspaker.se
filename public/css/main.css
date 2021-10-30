@@ -1,3 +1,4 @@
+@charset "UTF-8";
 html {
   box-sizing: border-box;
   height: 100%;
@@ -48,7 +49,7 @@ body {
   width: 0;
   height: 0;
   position: absolute;
-  background-image: url(/img/broken_noise.png), url(/img/go-back-image.png);
+  background-image: url(/img/bg-wave.png), url(/img/broken_noise.png), url(/img/go-back-image.png);
 }
 
 .main-wrapper {
@@ -113,6 +114,19 @@ section {
   display: none;
 }
 
+section.landing .greeting {
+  height: 290px;
+  position: relative;
+  animation: 1s 1 riseUp;
+}
+@keyframes riseUp {
+  from {
+    height: 800px;
+  }
+  to {
+    height: 290px;
+  }
+}
 section.landing .introduction {
   margin-top: 75px;
   text-align: center;
@@ -129,6 +143,36 @@ section.landing .introduction .dot-divider {
   margin-top: 7px;
   height: 7px;
   border-top: 1px dashed #BBB;
+}
+section.landing .bg-wave {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 90.5px;
+  overflow: hidden;
+}
+section.landing .bg-wave .wave-left, section.landing .bg-wave .wave-right, section.landing .bg-wave .wave-middle {
+  height: 90.5px;
+  position: absolute;
+  bottom: 0;
+}
+section.landing .bg-wave .wave-left, section.landing .bg-wave .wave-right {
+  width: calc(50vw - 381.5px);
+  background: url(/img/broken_noise.png);
+}
+section.landing .bg-wave .wave-left {
+  left: 0;
+}
+section.landing .bg-wave .wave-middle {
+  width: 763px;
+  min-width: 763px;
+  background: url(/img/broken_noise.png);
+  background: url(/img/bg-wave.png);
+  background-size: contain;
+  left: calc(50vw - 381.5px);
+}
+section.landing .bg-wave .wave-right {
+  right: 0;
 }
 section.landing .view-portfolio {
   display: block;
@@ -206,38 +250,75 @@ section.landing .go-back .go-back-image img {
   left: 0;
 }
 section.landing .portfolio {
-  padding: 0 40px 40px;
+  padding: 40px 0px 40px 0px;
   width: 100%;
+  position: relative;
   background: url(/img/broken_noise.png);
 }
 section.landing .portfolio .project {
   display: block;
-  margin: 20px auto 0;
+  margin: 0 auto 30px;
   max-width: 500px;
   width: 90%;
 }
-section.landing .portfolio .project img {
+section.landing .portfolio .project img, section.landing .portfolio .project video {
   display: block;
   width: 100%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 section.landing .portfolio .project .description {
   width: 100%;
   top: 0;
   right: 0;
-  padding: 20px 0px;
-  line-height: 1.2;
+  padding: 20px 0px 20px;
+  line-height: 1.6;
   color: #F0F0F0;
 }
 section.landing .portfolio .project .description .title {
   margin-bottom: 10px;
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 600;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-align: center;
+  display: flex;
+  justify-content: center;
 }
-section.landing .portfolio .project .description a {
-  color: #666;
+section.landing .portfolio .project .description .title::after {
+  content: "────────────────────────────────────────────────";
+  overflow: hidden;
+  margin-left: 15px;
+  margin-right: 0px;
+  color: #C14045;
+  flex-grow: 1;
 }
-section.landing .portfolio .project .description a:hover {
+section.landing .portfolio .project .description .title::before {
+  content: "────────────────────────────────────────────────";
+  overflow: hidden;
+  margin-right: 15px;
+  margin-left: 0px;
+  color: #C14045;
+  flex-grow: 1;
+}
+section.landing .portfolio .project .links {
+  margin-bottom: 20px;
+}
+section.landing .portfolio .project .links a {
+  margin-left: 20px;
+  color: #AAA;
+}
+section.landing .portfolio .project .links a:hover {
   color: #888;
+  text-decoration: none;
+}
+section.landing .portfolio .project .links a:first-child {
+  margin-left: 0;
+}
+section.landing .portfolio .project .links a::before {
+  content: "➦";
+  color: #C14045;
+  margin-right: 5px;
 }
 
 section.skills {

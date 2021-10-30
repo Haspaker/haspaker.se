@@ -4,8 +4,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>X-Ray Walnut</title>
-  <meta name="description" content="A simple HTML5 Template for new projects.">
-  <meta name="author" content="SitePoint">
+  <meta name="description" content="A volumetric emission/absorption rendering of a walnut">
+  <meta name="author" content="Haspaker">
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.7/dat.gui.min.js" 
     integrity="sha512-LF8ZB1iTwi4Qvkm4pekHG4a437Y9Af5ZuwbnW4GTbAWQeR2E4KW8WF+xH8b9psevV7wIlDMx1MH9YfPqgKhA/Q=="
@@ -26,6 +26,22 @@
 </head>
 
 <body>
+
+  <template id="info-template">
+    <div class="info-button"></div>
+    <div class="info">
+      <p>
+        Click and drag to move the walnut.
+        <br><br>
+        This is a emission/absorption direct volume rendering of a walnut. The data was collected via a CT scan by Henri Der Sarkissian and Felix Lucka.
+        <br><br>
+        The resolution should be adjusted automatically depending on the resources available. 
+        <br><br>
+        Made using vanilla Javascript and WebGL (no external libraries).
+      </p>
+    </div>
+  </template>
+
   <canvas id="main-canvas"></canvas>
   <div id="loading-message">
     <span>[ Loading Walnut ]</span>

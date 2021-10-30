@@ -72,7 +72,7 @@
 
 			<div class="pages">
 				<div class="page-label selected">Portfolio</div>
-				<div class="page-label">Skills</div>
+				<div class="page-label">About me</div>
 				<div class="external-label"><a target="_blank" href="http://www.github.com/Haspaker">Github</a></div>
 			</div>
 
@@ -107,56 +107,104 @@
 				</div>
 
 				<div class="introduction"> 
-					Web developer<br>
+					Developer<br>
 					<div class="dot-divider"></div>
 					Engineering student
 				</div>
 
-				<div class="view-portfolio">
+				<div class="bg-wave">
+					<div class="wave-left"></div>
+					<div class="wave-middle"></div>
+					<div class="wave-right"></div>
+				</div>
+
+				<!--div class="view-portfolio">
 				 	<div class="view-portfolio-image">
 				 		<img src="/img/view-portfolio-image.png"/>
 				 		<div class="alert"></div>
 				 	</div>
 				 	<div class="view-portfolio-title">View portfolio</div>
-				</div>
+				</div-->
 
 			</div>
 
 			 <div class="portfolio">
 
-			 	<div class="go-back">
+			 	<!--div class="go-back">
 			 		<div class="go-back-image">
 			 			<img src="/img/go-back-image.png"/>
 			 		</div>
-			 	</div>
+			 	</div-->
+
+				 <div class="project">
+					<div class="description">
+						<div class="title">Interactive fluid simulation</div>
+						<div class="description-text">
+							An interactive fluid simulation running on the GPU via WebGL.
+							<br><br>
+							Implements the multiphase Shan-Chen Lattice-Boltzmann method.
+						</div>
+					</div>
+					<div class="links">
+						<a href="https://haspaker.se/liquid" target="_blank">Visit website</a> 
+						<a href="https://github.com/Haspaker" target="_blank">View source on Github</a>
+					</div>
+					<a href="https://haspaker.se/liquid" target="_blank">
+						<video autoplay loop muted style="border: 3px solid rgba(42, 105, 206, 1.0)">
+							<source src="/video/liquid_loop.webm" type="video/webm">
+						</video>
+					</a>
+				</div>
+				 
+				<div class="project">
+					<div class="description">
+						<div class="title">Volumetric walnut</div>
+						<div class="description-text">
+							Useless superpower: X-ray vision, but only for legumes and drupes.
+							<br><br>
+							A website with an interactive emission/absorption direct volume rendering of a walnut, using data from a CT scan.
+						</div>
+					</div>
+					<div class="links">
+						<a href="https://haspaker.se/walnut" target="_blank">Visit website</a> 
+						<a href="https://github.com/Haspaker" target="_blank">View source on Github</a>
+					</div>
+					<a href="https://haspaker.se/walnut"" target="_blank">
+						<video autoplay loop muted>
+							<source src="/video/walnut_muted_final_scaled.webm" type="video/webm">
+						</video>
+					</a>
+				</div>
+				
 
 			 	<div class="project">
+					<div class="description">
+						<div class="title">Anagram.tips</div>
+						<div class="description-text">
+							A website for finding and creating anagrams in six different languages.
+						</div>
+					</div>
+					<div class="links">
+						<a href="http://anagram.haspaker.se" target="_blank">Visit website</a>
+						<a href="https://github.com/Haspaker/anagram.tips" target="_blank">View source on Github</a>
+					</div>
 					<a href="http://anagram.haspaker.se" target="_blank">
 						<img src="/img/anagram-tips.png"/>
 					</a>
-					<div class="description">
-						<div class="title">Anagram.tips</div>
-						<div class="description">
-							A website for finding and creating anagrams in six different languages.
-							<br><br>
-							<a href="http://anagram.haspaker.se" target="_blank">Visit website</a>
-							<br><br>
-							<a href="https://github.com/Haspaker/anagram.tips" target="_blank">View source on Github</a>
-						</div>
-					</div>
 				</div>
 				<div class="project">
+					<div class="description">
+						<div class="title">My website</div>
+						<div class="description-text">
+							You're here right now!
+						</div>
+					</div>
+					<div class="links">
+						<a href="https://github.com/Haspaker/haspaker.se" target="_blank">View source on Github</a>
+					</div>
 					<a href="/" target="_blank">
 						<img src="/img/my-newer-site.png"/>
 					</a>
-					<div class="description">
-						<div class="title">My website</div>
-						<div class="description">
-							You're here right now!
-							<br><br>
-							<a href="https://github.com/Haspaker/haspaker.se" target="_blank">View source on Github</a>
-						</div>
-					</div>
 				</div>
 			 </div>
 
@@ -213,22 +261,22 @@
 						<img src="/img/logos/php.png"/>
 						<span>php</span>
 					</div><br>
-					<div class="tool">
+					<!--div class="tool">
 						<img src="/img/logos/swift.png"/>
 						<span>swift</span>
 					</div>
 					<div class="tool">
 						<img src="/img/logos/xcode.png"/>
 						<span>cocoa</span>
-					</div><br>
+					</div><br-->
 					<div class="tool">
 						<img src="/img/logos/clojure.png"/>
 						<span>clojure</span>
 					</div><br>
-					<div class="tool">
+					<!--div class="tool">
 						<img src="/img/logos/photoshop.png"/>
 						<span>photoshop</span>
-					</div>
+					</div-->
 				</div>
 				<div class="experiences">
 					<div class="title">Experience</div>
@@ -236,8 +284,14 @@
 					<div class="timeline">
 						<div class="event">
 							<div class="box"></div>
+							<div class="period">2021</div>
+							<div class="engagement">Summer Project</div>
+							<div class="location">Developing tools for jetting quality analysis<br>Mycronic AB</div>
+						</div>
+						<div class="event">
+							<div class="box"></div>
 							<div class="period">2020</div>
-							<div class="engagement">Summer R&D</div>
+							<div class="engagement">Summer Project</div>
 							<div class="location">Rheological characterization of complex fluids<br>Mycronic AB</div>
 						</div>
 						<div class="event">

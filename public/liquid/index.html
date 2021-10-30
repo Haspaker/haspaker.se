@@ -1,0 +1,61 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Fluid Simulation by Haspaker</title>
+  <meta name="description" content="Interactive multiphase Shan-Chen Lattice-Boltzmann using WebGL.">
+  <meta name="author" content="Haspaker">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.7/dat.gui.min.js" 
+  integrity="sha512-LF8ZB1iTwi4Qvkm4pekHG4a437Y9Af5ZuwbnW4GTbAWQeR2E4KW8WF+xH8b9psevV7wIlDMx1MH9YfPqgKhA/Q=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tweakpane@3.0.5/dist/tweakpane.min.js"></script>
+
+
+  <!--meta property="og:title" content="A Basic HTML5 Template">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.sitepoint.com/a-basic-html5-template/">
+  <meta property="og:description" content="A simple HTML5 Template for new projects.">
+  <meta property="og:image" content="image.png">
+
+  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png"-->
+
+  <link rel="stylesheet" href="main.css">
+
+</head>
+
+<body>
+  <canvas id="main-canvas"></canvas>
+
+
+  <template id="info-template">
+    <div class="info-button"></div>
+    <div class="info">
+      <p class="control-line">
+        <span class="icon mouse-left"></span> <span> Add water </span>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span class="icon mouse-left"></span><span class="icon shift-key"></span> <span>&nbsp; Add wall</span>
+      </p>
+      <p class="control-line">
+        <span class="icon mouse-right"></span> <span> Remove water</span>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <span class="icon mouse-right"></span><span class="icon shift-key"></span> <span>&nbsp; Remove wall</span>
+      </p>
+      <br>
+      <p>
+        This is an implementation of the multiphase Shan-Chen Lattice-Boltzmann method.
+        <br><br>
+        It simulates the fluid by modeling the aggregate motion of the fluid molecules in nine discrete directions.
+        <br><br>
+        Mass is not always strictly conserved, due to optimizations made to speed up the computation.
+        <br><br>
+        Made using vanilla Javascript and WebGL (no external libraries).
+      </p>
+    </div>
+  </template>
+
+  <script src="main.js"></script>
+</body>
+</html>

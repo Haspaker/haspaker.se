@@ -52,8 +52,8 @@ class LandingPageView extends PageView
 				..removeClass \pulse
 				setTimeout (-> ..addClass \pulse), 5
 
-		@resize_greeting!
-		$(window).resize @resize_greeting
+		#@resize_greeting!
+		#$(window).resize @resize_greeting
 
 	resize_greeting: ~>
 		$greeting = @$ \.greeting
@@ -97,7 +97,7 @@ class Navigation extends Backbone.Model
 	hashlinks:
 		'': 0
 		'portfolio': 0
-		'skills': 1
+		'about': 1
 
 	initialize: ->
 

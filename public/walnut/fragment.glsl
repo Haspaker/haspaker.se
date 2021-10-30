@@ -25,7 +25,7 @@ const vec3 boxOrigin = vec3(0.0, 0.0, 1.5);
 const float boxSize = 1.0;
 const vec3 screenOrigin = vec3(0.0, 0.0, 1.0);
 
-const float stepSize = 0.4 * boxSize / RESOLUTION;
+const float stepSize = 0.5 * boxSize / RESOLUTION;
 
 vec3 pixToNaturalUnits(vec3 p) {
     return p / (screenSize.x / 2.0);
@@ -75,8 +75,10 @@ vec4 samplePoint(vec3 point) {
 
     vec4 color = vec4(grey, grey, grey, 1.0);
 
-    if (isolateNut) color *= float(packed_color.b <= 0.5);
-    if (isolateShell) color *= float(packed_color.b > 0.5);
+    //if (isolateNut) color *= float(packed_color.b <= 0.5);
+    color = IF(isolateShell && packed_color.b <= 0.5, vec4(0.0), color);
+    //if (isolateShell) color *= float(packed_color.b > 0.5);
+    color = IF(isolateNut && packed_color.b > 0.5, vec4(0.0), color);
 
     color.a = 1.0;
 
@@ -107,25 +109,18 @@ vec3 colorize(float grey) {
     vec3 insideColor = vec3(0.89, 0.72, 0.59);
     vec3 darkColor = vec3(0.0); //vec3(0.0); //vec3(0.27, 0.16, 0.09);
 
-    if (useColor) {
-        float shellLimit = 0.85/20.0;
-        float darkLimit = 0.4/20.0;
+    float shellLimit = 0.85/20.0;
+    float darkLimit = 0.4/20.0;
 
-        return darkColor* float(grey <= darkLimit)
+    vec3 colorized = darkColor* float(grey <= darkLimit)
                 + insideColor * float(grey <= shellLimit && grey > darkLimit)
                 + shellColor * float(grey > shellLimit);
 
-    } else {
-        float darkLimit;
-        if (isolateShell) 
-            darkLimit = 0.93/20.0;
-        else {
-            darkLimit = 0.4/20.0;
-        }
+    darkLimit = IF(isolateShell, 0.93/20.0, 0.4/20.0);
 
-        return vec3(1.0) * float(grey > darkLimit) + vec3(0.0) * float(grey <= darkLimit);
+    vec3 shaded = IF(grey > darkLimit, vec3(1.0), vec3(0.0));
 
-    }
+    return IF(useColor, colorized, shaded);
 }
 
 vec4 composite(vec4 inputColor, vec3 currentPoint, vec4 currentColor) {
@@ -136,7 +131,7 @@ vec4 composite(vec4 inputColor, vec3 currentPoint, vec4 currentColor) {
 
     float grey = currentColor.r;
     float magnitude = currentColor.r;
-    magnitude *= 5.0 * opacity;
+    magnitude *= 6.0 * opacity;
 
     float alpha_now = clamp(magnitude*1.0*opacity, 0.0, 1.0) * insideFlag;
     float alpha_in = inputColor.a;
@@ -152,7 +147,7 @@ vec4 composite(vec4 inputColor, vec3 currentPoint, vec4 currentColor) {
 vec4 march() {
     const vec3 upperBoxCorner = boxOrigin + boxSize/2.0;
     const float screenToUpperBoxCorner = length(upperBoxCorner - screenOrigin);
-    const float numSteps = 1.5*screenToUpperBoxCorner/stepSize;
+    const float numSteps = 0.8*screenToUpperBoxCorner/stepSize;
 
     vec3 startPoint = pixToNaturalUnits(getPixelPos());
     vec3 ray = normalize(startPoint);
@@ -165,9 +160,17 @@ vec4 march() {
 
     vec4 ca = vec4(0.0);
 
+    bool seenNut = false;
+
     for (int i = 0; i < int(numSteps); i++) {
 
         vec4 currentColor = samplePoint(currentPoint);
+
+        /*if (isolateNut) {
+            vec4 upcomingColor = samplePoint(currentPoint + 5.0*ray*stepSize);
+            seenNut = seenNut || upcomingColor.r > 0.4/20.0;
+            currentColor *= float(seenNut || !isolateNut);
+        }*/
         
         ca = composite(ca, currentPoint, currentColor);
 

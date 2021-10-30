@@ -6,8 +6,8 @@ const TEX_HEIGHT = 4096;
 
 //const STEPLENGTH = 30;
 const FPS = 1000;
-const LOWER_FPS_LIMIT = 24;
-const UPPER_FPS_LIMIT = 40;
+const LOWER_FPS_LIMIT = 15;
+const UPPER_FPS_LIMIT = 30;
 const ADAPT_RESOLUTION = true;
 
 const PACKED = true;
@@ -208,14 +208,27 @@ function initGui() {
     });
     //gui.name = "Walnut CT scan";
     //gui.closeOnTop = true;
+    gui.add(appState.settings, 'opacity', 0.0, 1.0, 0.01).name("Opacity");
     gui.add(appState.settings, 'sliceWidth', 0.0, 1.0, 0.01).name("Slice width");
     gui.add(appState.settings, 'slicePosition', 0.0, 1.0, 0.01).name("Slice position");
-    gui.add(appState.settings, 'opacity', 0.0, 1.0, 0.01).name("Opacity");
     gui.add(appState.settings, 'rotate').name("Rotate");
     gui.add(appState.settings, 'color').name("Add color");
     gui.add(appState.settings, 'hideShell').name("Hide shell");
     gui.add(appState.settings, 'hideNut').name("Hide nut");
     gui.open();
+
+    const showHideInfo = () => {
+        document.querySelector(".dg .info-button").classList.toggle("collapsed");
+        document.querySelector(".dg .info").classList.toggle("collapsed");
+    }
+
+    const showHideControls = () => 
+        document.querySelector(".dg .close-button").classList.toggle("collapsed");
+
+    var infoDiv = document.querySelector("#info-template").content.cloneNode(true);
+    document.querySelector(".dg.main.a").appendChild(infoDiv);
+    document.querySelector(".dg .info-button").onclick = showHideInfo;
+    document.querySelector(".dg .close-button").onclick = showHideControls;
 }
 
 function updateCanvasSize(gl) {
@@ -229,7 +242,7 @@ function initCanvas(vertexShaderSource, fragmentShaderSource, dataImage) {
     document.querySelector("#loading-message").remove();
 
     var canvas = document.querySelector("#main-canvas");
-    var gl = canvas.getContext("webgl");
+    var gl = canvas.getContext("webgl2");
 
     updateCanvasSize(gl);
 
@@ -343,23 +356,24 @@ function tick(gl) {
         if (frameDurations.length < 5) return;
         var sum = frameDurations.reduce((a, b) => a + b, 0);
         var avg = (sum / frameDurations.length) || 0;
+        console.log(avg, appState.width);
         var lowestLast5 = Math.min.apply(null, frameDurations.slice(-5));
         var totalLowest = Math.min.apply(null, frameDurations);
         var last = frameDurations[frameDurations.length - 1];
         if ((frameDurations.length == frameWindowSize && avg > 1000/LOWER_FPS_LIMIT) || lowestLast5 > 1000/10 || last > 1000/1) {
             if (appState.width > 256) {
-                appState.width /= 2.0;
-                appState.height /= 2.0;
+                appState.width /= 1.1;
+                appState.height /= 1.1;
                 console.log("DECREASING TO " + appState.width);
                 frameDurations = [];
                 downSizedToCount[appState.width] = downSizedToCount[appState.width] + 1 || 1.0;
                 updateCanvasSize(gl);
             }
         } else if (avg < 1000/UPPER_FPS_LIMIT && totalLowest < 1000/20) {
-            if (appState.width < 2048 && (!downSizedToCount[appState.width] || downSizedToCount[appState.width] < 2)) {
+            if (appState.width < 2048 && (!downSizedToCount[appState.width] || downSizedToCount[appState.width] < 2)) { // TODO
                 console.log("INCREASING");
-                appState.width *= 2.0;
-                appState.height *= 2.0;
+                appState.width *= 1.1;
+                appState.height *= 1.1;
                 frameDurations = [];
                 updateCanvasSize(gl);
             }
