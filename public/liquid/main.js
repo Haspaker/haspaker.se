@@ -402,7 +402,7 @@ function initCanvas(vertexShaderSource, firstPassFragSource, secondPassFragSourc
 }
 
 function resetDensity(gl, texture, fb) {
-    console.log("RESET");
+
     gl.bindFramebuffer(gl.FRAMEBUFFER, fb);
     gl.activeTexture(gl.TEXTURE0);
     var pixels = new Float32Array(WIDTH*HEIGHT*4);
@@ -422,7 +422,11 @@ function resetDensity(gl, texture, fb) {
     }
     console.log(densitySum, densityCount);
     appState.gravityDensity = densitySum/densityCount;
-    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA32F, WIDTH, HEIGHT, 0, gl.RGBA, gl.FLOAT, pixels);
+
+    if (!WEBGL2) var internalFormat = gl.RGBA;
+    if (WEBGL2) var internalFormat = gl.RGBA32F;
+
+    gl.texImage2D(gl.TEXTURE_2D, 0, internalFormat, WIDTH, HEIGHT, 0, gl.RGBA, gl.FLOAT, pixels);
 
     //const attachmentPoint = gl.COLOR_ATTACHMENT0;
     //gl.framebufferTexture2D(
@@ -451,8 +455,6 @@ function restoreDensity(gl, texture, fb) {
 }
 
 function render(gl) {
-
-    console.log("FRAME");
 
     const app = appState;
 
@@ -535,10 +537,6 @@ function render(gl) {
         gl.bindBuffer(gl.ARRAY_BUFFER, app.positionBuffer);
         gl.clear(gl.COLOR_BUFFER_BIT);
         drawBox(gl, app.secondPassProgram);
-    }
-
-    if (mouseInfo.down) {
-        console.log(mouseInfo.x, mouseInfo.y);
     }
 
     //return [oldStateInfo, newStateInfo];
