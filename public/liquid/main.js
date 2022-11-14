@@ -13,6 +13,7 @@ var mouseInfo = {
     y: 0,
     down: false,
     rightDown: false,
+    touchRight: false,
     mouseUpTime: 0,
     mouseDownTime: 0,
     shift: false
@@ -302,12 +303,29 @@ function initProgramState(gl) {
 
 }
 
+function selectButton(classname) {
+    var buttons = document.querySelector("#buttons");
+    for (var button of buttons.children) {
+        button.classList.remove('selected');
+    }
+
+    var selectedButton = document.querySelector("#buttons .button." + classname);
+    selectedButton.classList.add('selected');
+}
+
 function initCanvas(vertexShaderSource, firstPassFragSource, secondPassFragSource, renderFragSource, obstacleFragSource) {
     console.log('init');
 
     var canvas = document.querySelector("#main-canvas");
     if (WEBGL2) var gl = canvas.getContext("webgl2");
     else var gl = canvas.getContext("webgl");
+
+    var MOBILE = false;
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        selectButton('water');
+        MOBILE = true;
+        appState.settings.brushSize = 6;
+    }
 
     canvas.setAttribute('width', WIDTH);
     canvas.setAttribute('height', HEIGHT);
@@ -359,7 +377,7 @@ function initCanvas(vertexShaderSource, firstPassFragSource, secondPassFragSourc
     canvas.addEventListener('mousedown', function(e) {
         e.preventDefault();
         mouseInfo.down = e.button == 0;
-        mouseInfo.rightDown = e.button == 2;
+        if (!MOBILE) mouseInfo.rightDown = e.button == 2;
         mouseInfo.mouseDownTime = Date.now();
         //mouseInfo.shift = e.shiftKey;
     })
@@ -368,7 +386,7 @@ function initCanvas(vertexShaderSource, firstPassFragSource, secondPassFragSourc
         if (mouseInfo.down) mouseInfo.mouseUpTime = Date.now();
         //if (mouseInfo.rightDown) mouseInfo.shift = false;
         mouseInfo.down = false;
-        mouseInfo.rightDown = false;
+        if (!MOBILE) mouseInfo.rightDown = false;
     })
 
     document.querySelector('body').addEventListener('keydown', function(e) {
@@ -379,13 +397,49 @@ function initCanvas(vertexShaderSource, firstPassFragSource, secondPassFragSourc
         mouseInfo.shift = e.shiftKey;
     });
 
-    canvas.addEventListener('touchstart', function(e) {
-        mouseInfo.down = true;
+    canvas.addEventListener('touchstart', function(evt) {
+
+        if (mouseInfo.touchRight)
+            mouseInfo.rightDown = true;
+        else mouseInfo.down = true;
+
+        var rect = canvas.getBoundingClientRect(), // abs. size of element
+            scaleX = canvas.width / rect.width,    // relationship bitmap vs. element for X
+            scaleY = canvas.height / rect.height;  // relationship bitmap vs. element for Y
+
+        var touches = evt.changedTouches;
+
+        mouseInfo.x = (touches[0].clientX - rect.left) * scaleX;  // scale mouse coordinates after they have
+        mouseInfo.y = HEIGHT - (touches[0].clientY - rect.top) * scaleY;
     })
 
     canvas.addEventListener('touchend', function(e) {
+        console.log('tend');
         mouseInfo.down = false;
+        mouseInfo.rightDown = false;
     })
+
+    document.querySelector("#buttons .button.water").addEventListener('click', () => {
+        selectButton('water');
+        appState.settings.brushSize = 6;
+        mouseInfo.touchRight = false;
+        mouseInfo.shift = false;
+    })
+
+    document.querySelector("#buttons .button.wall").addEventListener('click', () => {
+        selectButton('wall');
+        appState.settings.brushSize = 6;
+        mouseInfo.touchRight = false;
+        mouseInfo.shift = true;
+    })
+
+    document.querySelector("#buttons .button.delete-wall").addEventListener('click', () => {
+        selectButton('delete-wall');
+        appState.settings.brushSize = 10;
+        mouseInfo.touchRight = true;
+        mouseInfo.shift = true;
+    })
+
     positionBuffer = initPositionBuffer(gl);
 
     appState.firstPassProgram = firstPassProgram;

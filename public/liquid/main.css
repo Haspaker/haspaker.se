@@ -109,3 +109,85 @@ body {
 .icon.mouse-right {
     background-image: url(svg/mouse-right.svg);
 }
+
+#buttons {
+    user-select: none;
+    width: 100%;
+    display: none; /* flex */
+    flex-direction: row;
+    align-items: center;
+    margin-top: 10px;
+    position: fixed;
+    top: 5px;
+    left: 5px;
+    pointer-events: none;
+}
+
+#buttons .button {
+    user-select: none;
+    pointer-events: all;
+    box-sizing: border-box;
+    width: calc(8vh - 10px);
+    height: calc(8vh - 10px);
+    border-radius: calc((8vh - 10px)/2);
+    margin: 5px;
+    border: 3px dashed white;
+    cursor: pointer;
+    box-shadow: 10px 10px 10px black;
+    pointer-events: auto;
+}
+
+#buttons .button.selected {
+    border: 8px solid #836953;
+    width: calc(11vh - 10px);
+    height: calc(11vh - 10px);
+    border-radius: calc((11vh - 10px)/2);
+}
+
+#buttons .water {
+    background-color: #031120;
+    background-image: url("images/droplet.png");
+    background-repeat: no-repeat;
+    background-size: auto 80%;
+    background-position: center;
+}
+
+#buttons .wall {
+    background-image: url("images/wall.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+#buttons .delete-wall {
+    background-image: url("images/delete_wall.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+#buttons .reset {
+    width: auto;
+    font-weight: bold;
+    line-height: calc(8vh - 10px - 6px);
+    text-align: center;
+    color: white;
+    font-family: arial;
+    padding: 0 10px 0 10px;
+}
+
+@media (pointer:none), (pointer:coarse) {
+
+.dg {
+    display: none !important;
+}
+
+#buttons {
+    display: flex !important;
+}
+
+body {
+    overscroll-behavior: contain !important;
+}
+
+}
