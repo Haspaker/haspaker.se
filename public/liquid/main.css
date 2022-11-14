@@ -111,7 +111,10 @@ body {
 }
 
 #buttons {
-    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
     width: 100%;
     display: none; /* flex */
     flex-direction: row;
@@ -124,14 +127,17 @@ body {
 }
 
 #buttons .button {
-    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
     pointer-events: all;
     box-sizing: border-box;
     width: calc(8vh - 10px);
     height: calc(8vh - 10px);
     border-radius: calc((8vh - 10px)/2);
     margin: 5px;
-    border: 3px dashed white;
+    border: 2px dashed white;
     cursor: pointer;
     box-shadow: 10px 10px 10px black;
     pointer-events: auto;
@@ -169,7 +175,7 @@ body {
 #buttons .reset {
     width: auto;
     font-weight: bold;
-    line-height: calc(8vh - 10px - 6px);
+    line-height: calc(8vh - 10px - 4px);
     text-align: center;
     color: white;
     font-family: arial;

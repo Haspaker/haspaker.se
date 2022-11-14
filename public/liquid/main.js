@@ -440,6 +440,10 @@ function initCanvas(vertexShaderSource, firstPassFragSource, secondPassFragSourc
         mouseInfo.shift = true;
     })
 
+    document.querySelector("#buttons .button.reset").addEventListener('click', () => {
+        initProgramState(gl)
+    })
+
     positionBuffer = initPositionBuffer(gl);
 
     appState.firstPassProgram = firstPassProgram;
