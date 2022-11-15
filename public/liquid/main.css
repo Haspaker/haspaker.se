@@ -133,9 +133,9 @@ body {
     user-select: none; /* Standard syntax */
     pointer-events: all;
     box-sizing: border-box;
-    width: calc(8vh - 10px);
-    height: calc(8vh - 10px);
-    border-radius: calc((8vh - 10px)/2);
+    width: calc(8vmax - 10px);
+    height: calc(8vmax - 10px);
+    border-radius: calc((8vmax - 10px)/2);
     margin: 5px;
     border: 2px dashed white;
     cursor: pointer;
@@ -145,9 +145,9 @@ body {
 
 #buttons .button.selected {
     border: 8px solid #836953;
-    width: calc(11vh - 10px);
-    height: calc(11vh - 10px);
-    border-radius: calc((11vh - 10px)/2);
+    width: calc(11vmax - 10px);
+    height: calc(11vmax - 10px);
+    border-radius: calc((11vmax - 10px)/2);
 }
 
 #buttons .water {
@@ -175,7 +175,7 @@ body {
 #buttons .reset {
     width: auto;
     font-weight: bold;
-    line-height: calc(8vh - 10px - 4px);
+    line-height: calc(8vmax - 10px - 4px);
     text-align: center;
     color: white;
     font-family: arial;
