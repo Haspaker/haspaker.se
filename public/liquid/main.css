@@ -1,3 +1,7 @@
+html {
+    overflow: hidden;
+}
+
 body {
     display: flex;
     height: 100%;
